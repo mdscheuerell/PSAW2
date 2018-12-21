@@ -1,8 +1,14 @@
 # NOAA Protected Species Assessment Workshop II (PSAW)
 
-## Time Series
+## Time series workshop
 
-This repository contains materials for time series workshop offered at the NOAA Protected Species Assessment Workshop in from Feb 11-14 in San Diego, CA.
+These are materials for the __Time Series Workshop__ offered as part of the NOAA Protected Species Assessment Workshop in San Diego, CA from February 11-14, 2019.
+
+## Instructor
+
+[__Mark Scheuerell__](https://faculty.washington.edu/scheuerl/)  
+_Fish Ecology Division, Northwest Fisheries Science Center, National Marine Fisheries Service, National Oceanic and Atmospheric Administration, Seattle WA USA_
+
 
 ### Disclaimer
 

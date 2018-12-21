@@ -1,28 +1,30 @@
-# NOAA Protected Species Assessment Workshop (PSAW) II
+# Protected Species Assessment Workshop (PSAW) II
 
-## Time series workshop
+## Time Series Analysis Training Session
 
-These are materials for the __Time Series Workshop__ offered as part of the NOAA Protected Species Assessment Workshop in San Diego, CA from February 11-14, 2019.
+These are materials for the [Time Series Analysis Training Session](https://mdscheuerell.github.io/PSAW2) offered as part of NMFS' Office of Science and Technology's [Protected Species Assessment Workshop](https://www.fisheries.noaa.gov/event/protected-species-assessment-workshop-psaw-ii) in La Jolla, CA from February 11-14, 2019.
 
 ## Instructor
 
 [__Mark Scheuerell__](https://faculty.washington.edu/scheuerl/)  
 _Fish Ecology Division, Northwest Fisheries Science Center, National Marine Fisheries Service, National Oceanic and Atmospheric Administration, Seattle WA USA_
 
-## Schedule
+## Schedule & topics
 
-8:30 - 10:00 Introduction to time series
+### Monday, Feb 11
+
+8:30 - 10:00 __Session 1: Introduction to time series__
 
   * autocovariance, autocorrelation, cross-correlation  
   * random walks and biased random walks  
   * AR(_p_), MA(_q_), ARMA(_p_,_q_) models  
 
-10:15 - 11:30 State-space models
+10:15 - 11:00 __Session 2: Introduction to state-space models__
 
   * univariate state-space models  
   * multivariate state-space models  
   
-11:30 - 12:30 
+11:30 - 12:30 __Session 3: Additional state-space models__
 
   * regression with auto-correlated errors  
   * dynamic factor analysis

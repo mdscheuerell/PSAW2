@@ -1,4 +1,4 @@
-# NOAA Protected Species Assessment Workshop II (PSAW)
+# NOAA Protected Species Assessment Workshop (PSAW) II
 
 ## Time series workshop
 
@@ -9,6 +9,25 @@ These are materials for the __Time Series Workshop__ offered as part of the NOAA
 [__Mark Scheuerell__](https://faculty.washington.edu/scheuerl/)  
 _Fish Ecology Division, Northwest Fisheries Science Center, National Marine Fisheries Service, National Oceanic and Atmospheric Administration, Seattle WA USA_
 
+## Schedule
+
+8:30 - 10:00 Introduction to time series
+
+  * autocovariance, autocorrelation, cross-correlation  
+  * random walks and biased random walks  
+  * AR(_p_), MA(_q_), ARMA(_p_,_q_) models  
+
+10:15 - 11:30 State-space models
+
+  * univariate state-space models  
+  * multivariate state-space models  
+  
+11:30 - 12:30 
+
+  * regression with auto-correlated errors  
+  * dynamic factor analysis
+  * dynamic linear models
+  
 
 ### Disclaimer
 

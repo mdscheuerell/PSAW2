@@ -1,0 +1,197 @@
+---
+title: "Stationary AR(_p) models"
+subtitle: "FISH 507 – Applied Time Series Analysis"
+author: "Mark Scheuerell"
+date: "11 Jan 2019"
+output:
+  ioslides_presentation:
+    css: lecture_slides.css
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(kableExtra)
+set.seed(123)
+```
+
+## Stationary AR(_p_) models
+
+Recall that _stationary_ processes have the following properties
+
+1. no systematic change in the mean or variance  
+2. no systematic trend  
+3. no periodic variations or seasonality
+
+We seek a means for identifying whether our AR(_p_) models are also stationary
+
+
+## Stationary AR(_p_) models
+
+We can write out an AR(_p_) model using the backshift operator
+
+$$
+  x_t = \phi_1 x_{t-1} + \phi_2 x_{t-2} + \dots + \phi_p x_{t-p} + w_t \\
+  \Downarrow \\
+\begin{align}
+  x_t - \phi_1 x_{t-1} - \phi_2 x_{t-2} - \dots - \phi_p x_{t-p} &= w_t \\
+  (1 - \phi_1 \mathbf{B} - \phi_2 \mathbf{B}^2 - \dots - \phi_p \mathbf{B}^p) x_t &= w_t \\
+  \phi_p (\mathbf{B}) x_t &= w_t \\
+\end{align}
+$$
+
+## Stationary AR(_p_) models
+
+If we treat $\mathbf{B}$ as a number (or numbers), we can out write the _characteristic equation_ as
+
+$$
+\phi_p (\mathbf{B}) x_t = w_t \\
+\Downarrow \\
+\phi_p (\mathbf{B}) = 0
+$$
+
+To be stationary, __all roots__ of the characteristic equation __must exceed 1 in absolute value__
+
+
+## Stationary AR(_p_) models
+
+For example, consider this AR(1) model
+
+$$
+\begin{align}
+  x_t &= 0.5 x_{t-1} + w_t \\
+  x_t - 0.5 x_{t-1} &= w_t \\
+  x_t - 0.5 \mathbf{B} x_t &= w_t \\
+  (1 - 0.5 \mathbf{B})x_t &= w_t \\
+\end{align}
+$$
+
+
+## Stationary AR(_p_) models
+
+For example, consider this AR(1) model from earlier
+
+$$
+\begin{align}
+  x_t &= 0.5 x_{t-1} + w_t \\
+  x_t - 0.5 x_{t-1} &= w_t \\
+   x_t - 0.5 \mathbf{B} x_t &= w_t \\
+ (1 - 0.5 \mathbf{B})x_t &= w_t \\
+  \Downarrow \\
+  1 - 0.5 \mathbf{B} &= 0 \\
+  -0.5 \mathbf{B} &= -1 \\
+  \mathbf{B} &= 2 \\
+\end{align}
+$$
+
+This model is indeed stationary because $\mathbf{B} > 1$
+
+
+## Stationary AR(_p_) models
+
+What about this AR(2) model from earlier?
+
+$$
+\begin{align}
+  x_t &= -0.2 x_{t-1} + 0.4 x_{t-2} + w_t \\
+  x_t + 0.2 x_{t-1} - 0.4 x_{t-2} &= w_t \\
+  (1 + 0.2 \mathbf{B} - 0.4 \mathbf{B}^2)x_t &= w_t \\
+\end{align}
+$$
+
+
+## Stationary AR(_p_) models
+
+What about this AR(2) model from earlier?
+
+$$
+\begin{align}
+  x_t &= -0.2 x_{t-1} + 0.4 x_{t-2} + w_t \\
+  x_t + 0.2 x_{t-1} - 0.4 x_{t-2} &= w_t \\
+  (1 + 0.2 \mathbf{B} - 0.4 \mathbf{B}^2)x_t &= w_t \\
+  \Downarrow \\
+  1 + 0.2 \mathbf{B} - 0.4 \mathbf{B}^2 &= 0 \\
+  \Downarrow \\
+  \mathbf{B} \approx -1.35 ~ \text{and}& ~ \mathbf{B} \approx 1.85
+\end{align}
+$$
+
+This model is _not_ stationary because only one $\mathbf{B} > 1$
+
+
+## What about random walks?
+
+Consider our random walk model
+
+$$
+\begin{align}
+  x_t &= x_{t-1} + w_t \\
+  x_t - x_{t-1} &= w_t \\
+  (1 - 1 \mathbf{B})x_t &= w_t \\
+\end{align}
+$$
+
+
+## What about random walks?
+
+Consider our random walk model
+
+$$
+\begin{align}
+  x_t &= x_{t-1} + w_t \\
+  x_t - x_{t-1} &= w_t \\
+  (1 - 1 \mathbf{B})x_t &= w_t \\
+  \Downarrow \\
+  1 - 1 \mathbf{B} &= 0 \\
+  -1 \mathbf{B} &= -1 \\
+  \mathbf{B} &= 1 \\
+\end{align}
+$$
+
+Random walks are __not__ stationary because $\mathbf{B} = 1 \ngtr 1$
+
+
+## Stationary AR(1) models
+
+We can define a space over which all AR(1) models are stationary
+
+
+## Stationary AR(1) models
+
+For $x_t = \phi x_{t-1} + w_t$, we have
+
+$$
+\begin{align}
+  1 - \phi \mathbf{B} &= 0 \\
+  -\phi \mathbf{B} &= -1 \\
+  \mathbf{B} &= \frac{1}{\phi} > 1 \Rightarrow 0 < \phi < 1\\
+\end{align}
+$$
+
+
+## Stationary AR(1) models
+
+For $x_t = \phi x_{t-1} + w_t$, we have
+
+$$
+\begin{align}
+  1 - \phi \mathbf{B} &= 0 \\
+  -\phi \mathbf{B} &= -1 \\
+  \mathbf{B} &= \frac{1}{\phi} > 1 \Rightarrow 0 < \phi < 1\\
+\end{align}
+$$
+
+For $x_t = -\phi x_{t-1} + w_t$, we have
+
+$$
+\begin{align}
+  1 + \phi \mathbf{B} &= 0 \\
+  \phi \mathbf{B} &= -1 \\
+  \mathbf{B} &= \frac{-1}{\phi} > 1 \Rightarrow -1 < \phi < 0\\
+\end{align}
+$$
+
+
+## Stationary AR(1) models
+
+Thus, AR(1) models are stationary if and only if $\lvert \phi \rvert < 1$  
+

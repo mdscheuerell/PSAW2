@@ -1,0 +1,190 @@
+---
+title: "Important time series operators"
+subtitle: "PSAW II – Time Series Analysis Training Session"
+author: "Mark Scheuerell"
+date: "11 Feb 2019"
+output:
+  ioslides_presentation:
+    css: lecture_slides.css
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(kableExtra)
+set.seed(123)
+```
+
+
+## Important operators
+
+This slide deck defines these 2 important operators:
+
+* _backshift shift operator_ ($\mathbf{B}$)
+
+* _difference operator_ ($\nabla$) 
+
+
+## The backshift shift operator
+
+The _backshift shift operator_ ($\mathbf{B}$) is an important function in time series analysis, which we define as
+
+$$
+\mathbf{B} x_t = x_{t-1}
+$$
+
+or more generally as
+
+$$
+\mathbf{B}^k x_t = x_{t-k}
+$$
+
+## The backshift shift operator
+
+For example, a random walk with
+
+$$
+x_t = x_{t-1} + w_t
+$$
+
+can be written as
+
+$$
+\begin{align}
+  x_t &= \mathbf{B} x_t + w_t \\
+  x_t - \mathbf{B} x_t &= w_t \\
+  (1 - \mathbf{B}) x_t &= w_t \\
+  x_t &= (1 - \mathbf{B})^{-1} w_t
+\end{align}
+$$
+
+
+## The difference operator
+
+The _difference operator_ ($\nabla$) is another important function in time series analysis, which we define as
+
+$$
+\nabla x_t = x_t - x_{t-1}
+$$
+
+
+## The difference operator
+
+The _difference operator_ ($\nabla$) is another important function in time series analysis, which we define as
+
+$$
+\nabla x_t = x_t - x_{t-1}
+$$
+
+For example, first-differencing a random walk yields white noise
+
+$$
+\begin{align}
+  \nabla x_t &= x_{t-1} + w_t \\
+  x_t - x_{t-1} &= x_{t-1} + w_t - x_{t-1}\\
+  x_t - x_{t-1} &= w_t\\
+\end{align}
+$$
+
+
+## Differencing a biased random walk
+
+First-differencing a biased random walk yields a constant mean (level) $u$ plus white noise
+
+$$
+\begin{align}
+  \nabla x_t &= x_{t-1} + u + w_t \\
+  x_t - x_{t-1} &= x_{t-1} + u + w_t - x_{t-1} \\
+  x_t - x_{t-1} &= u + w_t
+\end{align}
+$$
+
+
+## Differencing a biased random walk
+
+```{r ex_diff_biased_rw, fig.cap="$x_t = x_{t-1} + 1 + w_t; w_t \\sim \\text{N}(0,1)$"}
+xx <- arima.sim(model=list(ar=0.5, sd=0.1), n=100)
+
+par(mfrow = c(1,2), mai = c(1.5,0.9,0.1,0.1), omi = c(0,0,0,0))
+plot.ts(diff(xx), ylab = expression(nabla~italic(x[t])))
+acf(diff(xx))
+```
+
+
+## The difference operator
+
+The difference operator and the backshift operator are related
+
+$$
+\nabla^k = (1 - \mathbf{B})^k
+$$
+
+
+## The difference operator
+
+The difference operator and the backshift operator are related
+
+$$
+\nabla^k = (1 - \mathbf{B})^k
+$$
+
+For example
+
+$$
+\begin{align}
+  \nabla x_t &= (1 - \mathbf{B})x_t \\
+  x_t - x_{t-1} &= x_t - \mathbf{B} x_t \\
+  x_t - x_{t-1} &= x_t - x_{t-1}
+\end{align}
+$$
+
+
+## Differencing to remove a trend
+
+Differencing is a simple means for removing a trend
+
+The 1st-difference removes a linear trend; a 2nd-difference would remove a quadratic trend, etc.
+
+
+## Differencing to remove a trend
+
+```{r diff_linear, fig.align="center"}
+## create biased RW
+rr <- ww <- rnorm(50)
+for(t in 2:50) {
+  rr[t] <- 0.3 + rr[t-1] + ww[t]
+}
+
+par(mfrow = c(2,1), mai = c(0.5,0.8,0.1,0), omi=c(0,0,0,0))
+
+## raw data
+plot.ts(rr, las = 1,
+        ylab = expression(italic(x[t])))
+## first difference
+plot.ts(diff(rr), las = 1,
+        ylab = expression(nabla~italic(x[t])))
+```
+
+
+## Differencing to remove seasonality
+
+Differencing is a simple means for removing a seasonal effect
+
+Using a 1st-difference with $k = period$ removes both trend & seasonal effects
+
+
+## Differencing to remove seasonality
+
+```{r diff_season, fig.align="center"}
+library(MARSS)
+data(lakeWAplankton)
+lwa <- lakeWAplanktonTrans
+par(mfrow = c(2,1), mai = c(0.5,0.8,0.1,0), omi=c(0,0,0,0))
+
+## raw data
+plot.ts(lwa[,"Temp"], las = 1,
+        ylab = "Temperature")
+## first difference
+plot.ts(diff(lwa[,"Temp"], 12), las = 1,
+        ylab = expression(nabla~Temperature))
+```
+

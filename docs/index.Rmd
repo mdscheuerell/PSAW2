@@ -33,13 +33,17 @@ Monday, February 11, 2019
 
 ## Schedule & topics
 
+Links are included after each topic for both the knitted slide deck and the RMarkdown code used to generate them.
+
 ### Session 1: Introduction to time series analysis
 
 __8:30 - 10:00__ 
 
-  * autocovariance, autocorrelation, cross-correlation  
-  * random walks and biased random walks  
-  * AR(_p_), MA(_q_), ARMA(_p_,_q_) models  
+  * Characteristics, autocorrelation, cross-correlation | [slides](session_1/lec_01_intro.html) | [Rmd](session_1/lec_01_intro.Rmd)  
+  
+  * White noise, random walks and biased random walks | [slides](session_1/lec_02_WN_RW.html) | [Rmd](session_1/lec_02_WN_RW.Rmd)  
+  
+  * AR(_p_), MA(_q_), ARMA(_p_,_q_) models | [slides](session_1/lec_03_ARMA_models.html) | [Rmd](session_1/lec_03_ARMA_models.Rmd)  
 
 ***
 
@@ -53,8 +57,9 @@ __10:00 - 10:15__
 
 __10:15 - 11:15__
 
-  * univariate state-space models  
-  * multivariate state-space models  
+  * Univariate state-space models | [slides](session_2/lec_04_SSM.html) | [Rmd](session_2/lec_04_SSM.Rmd)   
+  
+  * Multivariate state-space models | [slides](session_2/lec_05_MSSM.html) | [Rmd](session_2/lec_04_MSSM.Rmd)  
   
 ***
 
@@ -68,19 +73,21 @@ __11:15 - 11:30__
 
 __11:30 - 12:30__
 
-  * regression with auto-correlated errors  
-  * dynamic factor analysis
-  * dynamic linear models
+  * Regression with auto-correlated errors | [slides](session_3/lec_06_regr_ar1.html) | [Rmd](session_3/lec_06_SSM.Rmd)
+  
+  * Dynamic Factor Analysis (DFA) | [slides](session_3/lec_07_DFA.html) | [Rmd](session_3/lec_07_DFA.Rmd)
+  
+  * Dynamic Linear Models (DLMs) | [slides](session_3/lec_08_DLM.html) | [Rmd](session_3/lec_08_DLM.Rmd)
   
 ***
 
 ## Additional information
 
-Here is some additional useful information on the following topics:
+Here is some additional background information on the following topics:
 
- * [Backshift and Difference operators](additional/ts_operators.html)
+ * Backshift and Difference operators | [slides](additional/ts_operators.html) | [Rmd](additional/ts_operators.Rmd)
  
- * [Identifying stationary AR(_p_) models](additional/stationary_AR.html) 
+ * Identifying stationary AR(_p_) models | [slides](additional/stationary_AR.html) | [Rmd]((additional/stationary_AR.Rmd))
  
- * [Invertible MA(_q_) models](additional/invertible_MA.html) 
+ * Invertible MA(_q_) models | [slides](additional/invertible_MA.html) | [Rmd]((additional/invertible_MA.Rmd))
  

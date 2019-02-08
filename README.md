@@ -9,26 +9,60 @@ These are materials for the [Time Series Analysis Training Session](https://mdsc
 [__Mark Scheuerell__](https://faculty.washington.edu/scheuerl/)  
 _Fish Ecology Division, Northwest Fisheries Science Center, National Marine Fisheries Service, National Oceanic and Atmospheric Administration, Seattle WA USA_
 
+## Date & Location
+
+Monday, February 11, 2019
+
+Eckart Sea Cave, Scripps Institute of Oceanography, La Jolla, CA 
+
+
 ## Schedule & topics
 
-### Monday, Feb 11
+### Session 1: Introduction to time series analysis
 
-8:30 - 10:00 __Session 1: Introduction to time series__
+__8:30 - 10:00__ 
 
-  * autocovariance, autocorrelation, cross-correlation  
-  * random walks and biased random walks  
-  * AR(_p_), MA(_q_), ARMA(_p_,_q_) models  
-
-10:15 - 11:00 __Session 2: Introduction to state-space models__
-
-  * univariate state-space models  
-  * multivariate state-space models  
+  * Characteristics, autocorrelation, cross-correlation
   
-11:30 - 12:30 __Session 3: Additional state-space models__
+  * White noise, random walks and biased random walks
+  
+  * AR(_p_), MA(_q_), ARMA(_p_,_q_) models
 
-  * regression with auto-correlated errors  
-  * dynamic factor analysis
-  * dynamic linear models
+***
+
+### Break
+
+__10:00 - 10:15__
+
+***
+
+### Session 2: Introduction to state-space models
+
+__10:15 - 11:15__
+
+  * Univariate state-space models   
+  
+  * Multivariate state-space models 
+  
+***
+
+### Break
+
+__11:15 - 11:30__
+
+***
+
+### Session 3: Additional state-space models
+
+__11:30 - 12:30__
+
+  * Regression with auto-correlated errors
+  
+  * Dynamic Factor Analysis (DFA)
+  
+  * Dynamic Linear Models (DLMs)
+  
+***
   
 
 ### Disclaimer

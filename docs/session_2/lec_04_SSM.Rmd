@@ -132,3 +132,115 @@ text("Time or space", x=cc/2, y=-ss/2, xpd=NA, pos=1, cex=2)
 Consider for a moment the very act of collecting data
 
 
+## Consider these data
+
+```{r}
+set.seed(666)
+
+TT <- 30
+  
+ww <- rnorm(TT)
+xx <- cumsum(ww)
+
+ee <- rnorm(TT, 0.7)
+yy <- xx + ee
+
+par(mai = c(0.9,0.9,0.1,0.1), omi = c(0,0,0,0))
+plot.ts(yy, ylim = range(xx,yy),
+        lwd = 2, type = "o", pch = 16, cex = 1.5, col = "blue",
+        ylab = expression(italic(x[t])~~or~~italic(y[t])))
+```
+
+
+## Model options
+
+__Linear regression__
+
+State model
+
+$$
+x_t = \alpha + \beta t
+$$
+
+Observation model
+
+$$
+y_t = x_t + v_t ~ \text{with} ~ v_t \sim N(0,r)
+$$
+
+## Linear regression
+
+```{r}
+theta <- coef(lm(yy ~ seq(TT)))
+y_obs <- theta[1] + theta[2] * seq(TT)
+
+par(mai = c(0.9,0.9,0.1,0.1), omi = c(0,0,0,0))
+plot.ts(yy, lwd = 2, type = "o", pch = 16,  cex = 1.5, col = "blue",
+        ylab = expression(italic(y[t])))
+lines(y_obs, lwd = 2, type = "o", pch = 16, col = "gray")
+```
+
+All of the variance in $y_t$ is due to observation error
+
+
+## Model options
+
+__Random walk__
+
+State model
+
+$$
+x_t = x_{t-1} + w_t ~ \text{with} ~ w_t \sim N(0,q)
+$$
+
+Observation model
+
+$$
+y_t = x_t
+$$
+
+
+## Process error only
+
+```{r}
+par(mai = c(0.9,0.9,0.1,0.1), omi = c(0,0,0,0))
+plot.ts(yy, lwd = 2, type = "o", pch = 16, cex = 1.5, col = "blue",
+        ylab = expression(italic(y[t])))
+lines(yy, lwd = 2, type = "o", pch = 16, col = "gray")
+```
+
+All of the variance in $y_t$ is due to process error
+
+
+## Model options
+
+__Random walk with observation error__
+
+State model
+
+$$
+x_t = x_{t-1} + w_t ~ \text{with} ~ w_t \sim N(0,q)
+$$
+
+Observation model
+
+$$
+y_t = x_t + v_t ~ \text{with} ~ v_t \sim N(0,r)
+$$
+
+
+## Random walk with observation error
+
+```{r}
+par(mai = c(0.9,0.9,0.1,0.1), omi = c(0,0,0,0))
+plot.ts(yy, ylim = range(xx,yy),
+        lwd = 2, type = "o", pch = 16, cex = 1.5, col = "blue",
+        ylab = expression(italic(x[t])~~or~~italic(y[t])))
+lines(xx, lwd = 2, type = "o", pch = 16, col = "gray")
+
+```
+
+The variance in $y_t$ is due to both process & observation error
+
+
+

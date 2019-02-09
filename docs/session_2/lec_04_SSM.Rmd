@@ -145,7 +145,7 @@ Information gathered depends on many factors
 ## Consider these data
 
 ```{r}
-set.seed(666)
+set.seed(211)
 
 TT <- 30
 
@@ -284,6 +284,82 @@ lines(yy, lwd = 2, type = "o", pch = 16, col = "gray")
 
 ```{r}
 par(mai = c(0.9,0.9,0.1,0.1), omi = c(0,0,0,0))
+## blank slate
+plot.ts(yy, ylim = range(xx,yy), type = "n",
+        ylab = expression(italic(x[t])))
+## x_1
+points(xx[1], pch = 16, col = "black")
+```
+
+$x_1$
+
+
+## Random walk with observation error
+
+```{r}
+par(mai = c(0.9,0.9,0.1,0.1), omi = c(0,0,0,0))
+## blank slate
+plot.ts(yy, ylim = range(xx,yy), type = "n",
+        ylab = expression(italic(x[t])))
+## x_{t-1} + u + w_t
+lines(c(2, 2), c(xx[1], xx[2]) + uu, lwd = 2, type = "o", pch = 16, col = "black")
+## x_{t-1} + u
+lines(c(xx[1], xx[1] + uu), lwd = 2, type = "o", pch = 16, col = "black")
+## x_1
+points(xx[1], pch = 16, col = "gray")
+```
+
+$x_2 = (x_1 - 0.2) + w_2$
+
+
+## Random walk with observation error
+
+```{r}
+par(mai = c(0.9,0.9,0.1,0.1), omi = c(0,0,0,0))
+## blank slate
+plot.ts(yy, ylim = range(xx,yy), type = "n",
+        ylab = expression(italic(y[2])))
+## y_t = x_t + v_t
+lines(c(2, 2), c(yy[2], xx[2] + uu), lwd = 2, type = "o", pch = 16, col = "black")
+## x_{t-1} + u + w_t
+lines(c(2, 2), c(xx[1], xx[2]) + uu, lwd = 2, type = "o", pch = 16, col = "gray")
+## x_{t-1} + u
+lines(c(xx[1], xx[1] + uu), lwd = 2, type = "o", pch = 16, col = "gray")
+## x_1
+points(xx[1], pch = 16, col = "gray")
+```
+
+$y_2 = x_2 + v_2$
+
+
+## Random walk with observation error
+
+```{r}
+par(mai = c(0.9,0.9,0.1,0.1), omi = c(0,0,0,0))
+## blank slate
+plot.ts(yy, ylim = range(xx,yy), type = "n",
+        ylab = expression(italic(y[2])))
+## x_{t-1} + w_t
+lines(c(2, 2), c(yy[2], xx[2]), lwd = 2, type = "o", pch = 16, col = "gray")
+## x_{t-1} + w_t
+lines(c(2, 2), c(xx[1], xx[2]), lwd = 2, type = "o", pch = 16, col = "gray")
+## x_1
+lines(c(xx[1], xx[1]), lwd = 2, type = "o", pch = 16, col = "gray")
+## x_1
+points(xx[1], pch = 16, col = "gray")
+```
+
+$x_3 = x_2 + w_3$
+
+
+
+
+
+
+##
+
+```{r}
+
 plot.ts(yy, ylim = range(xx,yy),
         lwd = 2, type = "o", pch = 16, cex = 1.5, col = "blue",
         ylab = expression(italic(x[t])~~or~~italic(y[t])))

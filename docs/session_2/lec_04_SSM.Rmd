@@ -156,7 +156,7 @@ for(t in 2:TT) {
   xx[t] <- xx[t-1] + uu + ww[t]
 }
 
-ee <- rnorm(TT, 0.7)
+ee <- rnorm(TT)
 yy <- xx + ee
 
 par(mai = c(0.9,0.9,0.1,0.1), omi = c(0,0,0,0))
@@ -179,7 +179,7 @@ $$
 Observation model
 
 $$
-y_t = x_t + v_t ~ \text{with} ~ v_t \sim N(0,r)
+y_t = x_t + v_t ~ \text{with} ~ v_t \sim \text{N}(0,r)
 $$
 
 ## Linear regression
@@ -217,7 +217,7 @@ __Biased random walk__
 State model
 
 $$
-x_t = x_{t-1} + u + w_t ~ \text{with} ~ w_t \sim N(0,q)
+x_t = x_{t-1} + u + w_t ~ \text{with} ~ w_t \sim \text{N}(0,q)
 $$
 
 Observation model
@@ -227,7 +227,7 @@ y_t = x_t
 $$
 
 
-## Random walk
+## Biased random walk
 
 ```{r}
 par(mai = c(0.9,0.9,0.1,0.1), omi = c(0,0,0,0))
@@ -254,121 +254,60 @@ Errors: $w_t = y_t - y_{t-1}$
 
 ## Model options
 
-__Random walk with observation error__
+__Biased random walk with observation error__
 
 State model
 
 $$
-x_t = x_{t-1} + w_t ~ \text{with} ~ w_t \sim N(0,q)
+x_t = x_{t-1} + w_t ~ \text{with} ~ w_t \sim \text{N}(0,q)
 $$
 
 Observation model
 
 $$
-y_t = x_t + v_t ~ \text{with} ~ v_t \sim N(0,r)
+y_t = x_t + v_t ~ \text{with} ~ v_t \sim \text{N}(0,r)
 $$
 
 
-## Process & observation errors
+## Biased random walk
 
 ```{r}
-par(mai = c(0.9,0.9,0.1,0.1), omi = c(0,0,0,0))
-plot.ts(yy, lwd = 2, type = "o", pch = 16, cex = 1.5, col = "blue",
-        ylab = expression(italic(y[t])))
-lines(yy, lwd = 2, type = "o", pch = 16, col = "gray")
-```
-
-
-
-## Random walk with observation error
-
-```{r}
+xw <- rbind(cbind(seq(TT), xx), cbind(seq(TT)+0.5, xx+uu))
+xw <- xw[order(xw[,1]),]
+xw[,1] <- c(1, rep(seq(2, TT), ea = 2), TT+1)
+  
 par(mai = c(0.9,0.9,0.1,0.1), omi = c(0,0,0,0))
 ## blank slate
 plot.ts(yy, ylim = range(xx,yy), type = "n",
         ylab = expression(italic(x[t])))
-## x_1
-points(xx[1], pch = 16, col = "black")
+lines(xw[,1], xw[,2], lwd = 2, col = "gray")
+lines(xx, lwd = 2, type = "o", pch = 16, col = "black")
 ```
 
-$x_1$
 
-
-## Random walk with observation error
+## Biased random walk with obs error
 
 ```{r}
 par(mai = c(0.9,0.9,0.1,0.1), omi = c(0,0,0,0))
 ## blank slate
 plot.ts(yy, ylim = range(xx,yy), type = "n",
-        ylab = expression(italic(x[t])))
-## x_{t-1} + u + w_t
-lines(c(2, 2), c(xx[1], xx[2]) + uu, lwd = 2, type = "o", pch = 16, col = "black")
-## x_{t-1} + u
-lines(c(xx[1], xx[1] + uu), lwd = 2, type = "o", pch = 16, col = "black")
-## x_1
-points(xx[1], pch = 16, col = "gray")
-```
-
-$x_2 = (x_1 - 0.2) + w_2$
-
-
-## Random walk with observation error
-
-```{r}
-par(mai = c(0.9,0.9,0.1,0.1), omi = c(0,0,0,0))
-## blank slate
-plot.ts(yy, ylim = range(xx,yy), type = "n",
-        ylab = expression(italic(y[2])))
-## y_t = x_t + v_t
-lines(c(2, 2), c(yy[2], xx[2] + uu), lwd = 2, type = "o", pch = 16, col = "black")
-## x_{t-1} + u + w_t
-lines(c(2, 2), c(xx[1], xx[2]) + uu, lwd = 2, type = "o", pch = 16, col = "gray")
-## x_{t-1} + u
-lines(c(xx[1], xx[1] + uu), lwd = 2, type = "o", pch = 16, col = "gray")
-## x_1
-points(xx[1], pch = 16, col = "gray")
-```
-
-$y_2 = x_2 + v_2$
-
-
-## Random walk with observation error
-
-```{r}
-par(mai = c(0.9,0.9,0.1,0.1), omi = c(0,0,0,0))
-## blank slate
-plot.ts(yy, ylim = range(xx,yy), type = "n",
-        ylab = expression(italic(y[2])))
-## x_{t-1} + w_t
-lines(c(2, 2), c(yy[2], xx[2]), lwd = 2, type = "o", pch = 16, col = "gray")
-## x_{t-1} + w_t
-lines(c(2, 2), c(xx[1], xx[2]), lwd = 2, type = "o", pch = 16, col = "gray")
-## x_1
-lines(c(xx[1], xx[1]), lwd = 2, type = "o", pch = 16, col = "gray")
-## x_1
-points(xx[1], pch = 16, col = "gray")
-```
-
-$x_3 = x_2 + w_3$
-
-
-
-
-
-
-##
-
-```{r}
-
-plot.ts(yy, ylim = range(xx,yy),
-        lwd = 2, type = "o", pch = 16, cex = 1.5, col = "blue",
         ylab = expression(italic(x[t])~~or~~italic(y[t])))
-lines(xx, lwd = 2, type = "o", pch = 16, col = "gray")
-segments(seq(2, TT), y0 = xx[-1], y1 = xx[-TT], lwd = 3, col = "red")
-segments(seq(2, TT), y0 = xx[-1], y1 = yy[-1])
+lines(xw[,1], xw[,2], lwd = 2, col = "gray")
+lines(xx, lwd = 2, type = "o", pch = 16, col = "black")
+segments(seq(TT), y0 = xx, y1 = yy, col = "red")
+lines(yy, lwd = 2, type = "o", pch = 16, col = "blue", cex = 1.5)
 ```
 
 The variance in $y_t$ is due to both process & observation error
 
+
+## Biased random walk with obs error
+
+```{r}
+par(mai = c(0.9,0.9,0.1,0.1), omi = c(0,0,0,0))
+plot.ts(yy, lwd = 2, type = "o", pch = 16, cex = 1.5, col = "blue",
+        ylab = expression(italic(x[t])~~or~~italic(y[t])))
+lines(xx, lwd = 2, type = "o", pch = 16, col = "gray")
+```
 
 

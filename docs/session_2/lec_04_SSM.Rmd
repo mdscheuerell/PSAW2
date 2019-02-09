@@ -58,7 +58,7 @@ arrows(x0=x0t,x1=x1t,y0=ymt, col="#488fdf", lwd=3, length=0.12)
 ## Time or space
 arrows(x0=ss/2, x1=cc-ss/2, y0=-ss/3+ss*2,
        length=0.12, lwd=3, xpd=NA)
-text("Time or space", x=cc/2, y=-ss/2+ss*2, xpd=NA, pos=1, cex=2)
+text("Time", x=cc/2, y=-ss/2+ss*2, xpd=NA, pos=1, cex=2)
 ```
 
 
@@ -123,13 +123,23 @@ arrows(x0=xm[c(1,3,5,7)], y0=y0b, y1=y1b,
 ## Time or space
 arrows(x0=ss/2, x1=cc-ss/2, y0=-ss/3,
        length=0.12, lwd=3, xpd=NA)
-text("Time or space", x=cc/2, y=-ss/2, xpd=NA, pos=1, cex=2)
+text("Time", x=cc/2, y=-ss/2, xpd=NA, pos=1, cex=2)
 ```
 
 
 ## Observation (sampling) errors
 
 Consider for a moment the very act of collecting data
+
+Information gathered depends on many factors
+
+* Environmental conditions (eg, turbidity, currents)
+
+* Behavior (eg, vertical migration, threat avoidance)
+
+* Demographics (age, sex, maturity)
+
+* Sampling design/coverage
 
 
 ## Consider these data
@@ -169,6 +179,21 @@ y_t = x_t + v_t ~ \text{with} ~ v_t \sim N(0,r)
 $$
 
 ## Linear regression
+
+```{r}
+theta <- coef(lm(yy ~ seq(TT)))
+y_obs <- theta[1] + theta[2] * seq(TT)
+
+par(mai = c(0.9,0.9,0.1,0.1), omi = c(0,0,0,0))
+plot.ts(yy, lwd = 2, type = "o", pch = 16,  cex = 1.5, col = "blue",
+        ylab = expression(italic(y[t])))
+lines(y_obs, lwd = 2, type = "o", pch = 16, col = "gray")
+```
+
+All of the variance in $y_t$ is due to observation error
+
+
+## Observation errors
 
 ```{r}
 theta <- coef(lm(yy ~ seq(TT)))

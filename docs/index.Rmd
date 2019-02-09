@@ -47,7 +47,7 @@ __8:30 - 10:00__
 
 ***
 
-### Break
+#### Break
 
 __10:00 - 10:15__
 
@@ -63,7 +63,7 @@ __10:15 - 11:15__
   
 ***
 
-### Break
+#### Break
 
 __11:15 - 11:30__
 
@@ -80,6 +80,8 @@ __11:30 - 12:30__
   * Dynamic Linear Models (DLMs) | [slides](session_3/lec_08_DLM.html) | [Rmd](session_3/lec_08_DLM.Rmd)
   
 ***
+
+<br>
 
 ## Additional information
 

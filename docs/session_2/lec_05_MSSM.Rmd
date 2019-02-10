@@ -21,3 +21,112 @@ Multivariate state-space models
 
 2. observation model
 
+
+## Simple model for 2+ time series | Random walk observed with error
+
+$$
+x_{i,t} = x_{i,t-1} + w_{i,t} \\
+y_{i,t} = x_{i,t} + a_i + v_{i,t}
+$$
+
+with
+
+$v_{i,t} \sim \text{N}(0, r)$
+
+$w_{i,t} \sim \text{N}(0, q)$
+
+
+## Random walk observed with error
+
+$$
+x_{1,t} = x_{1,t-1} + w_{1,t} \\
+x_{2,t} = x_{2,t-1} + w_{2,t} \\
+\vdots \\
+x_{n,t} = x_{n,t-1} + w_{n,t}
+$$
+
+$$
+y_{1,t} = x_{1,t} + a_1 + v_{1,t} \\
+y_{2,t} = x_{2,t} + a_2 + v_{2,t} \\
+\vdots \\
+y_{n,t} = x_{n,t} + a_2 + v_{n,t} \\
+$$
+
+
+## Random walk observed with error | In matrix form
+
+$$
+\begin{bmatrix}
+x_{1,t} \\
+x_{2,t} \\
+\vdots \\
+x_{n,t} \\
+\end{bmatrix} =
+\begin{bmatrix}
+x_{1,t-1} \\
+x_{2,t-1} \\
+\vdots \\
+x_{n,t-1} \\
+\end{bmatrix} + 
+\begin{bmatrix}
+w_{1,t} \\
+w_{2,t} \\
+\vdots \\
+w_{n,t} \\
+\end{bmatrix}
+$$
+
+$$
+\begin{bmatrix}
+y_{1,t} \\
+y_{2,t} \\
+\vdots \\
+y_{n,t} \\
+\end{bmatrix} =
+\begin{bmatrix}
+x_{1,t} \\
+x_{2,t} \\
+\vdots \\
+x_{n,t} \\
+\end{bmatrix} + 
+\begin{bmatrix}
+a_1 \\
+a_2 \\
+\vdots \\
+a_n \\
+\end{bmatrix} + 
+\begin{bmatrix}
+v_{1,t} \\
+v_{2,t} \\
+\vdots \\
+v_{n,t} \\
+\end{bmatrix}
+$$
+
+
+## Random walk observed with error | In matrix form
+
+$$
+\mathbf{x}_t = \mathbf{x}_{t-1} + \mathbf{w}_t \\
+\mathbf{y}_t = \mathbf{x}_t + \mathbf{a} + \mathbf{v}_t
+$$
+
+with 
+
+$\mathbf{v}_t \sim \text{MVN}(\mathbf{0}, \mathbf{R})$
+
+$\mathbf{w}_t \sim \text{MVN}(\mathbf{0}, \mathbf{Q})$
+
+
+## Random walk observed with error | In matrix form
+
+$$
+\mathbf{x}_t = \mathbf{x}_{t-1} + \mathbf{w}_t \\
+\mathbf{y}_t = \mathbf{x}_t + \mathbf{a} + \mathbf{v}_t \\
+\Downarrow \\
+\mathbf{x}_t = \mathbf{x}_{t-1} + \mathbf{w}_t \\
+\mathbf{y}_t = \mathbf{Z} \mathbf{x}_t + \mathbf{a} + \mathbf{v}_t
+$$
+
+with $\mathbf{Z}$ equal to the Identity matrix $\mathbf{I}$
+

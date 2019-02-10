@@ -405,6 +405,8 @@ $$
 
 It turns out that $r_{max}$ and $b$ are confounded and create a likelihood surface with a strong ridge
 
+This means we need a _long_ time series or mulitple observations of the process 
+
 In practice, we will de-mean our data and instead use a familiar AR(1) model
 
 $$
@@ -422,7 +424,162 @@ y_t = x_t + v_t
 $$
 
 
+## Simulate a Gompertz model
 
+Simulate the AR(1) state model
+
+```{r, echo=TRUE}
+## number of time steps
+TT <- 50
+## strength of density-dependence (0 < b < 1)
+bb <- 0.5
+## time series of process errors with SD = 1
+ww <- rnorm(TT, 0, sqrt(1))
+## initialize state & set x0 = w0
+xx <- ww
+## loop over time steps
+for(t in 2:TT) {
+  xx[t] <- bb * xx[t-1] + ww[t]
+}
+```
+
+
+## Simulate a Gompertz model
+
+Add some observation error
+
+```{r, echo=TRUE}
+## obs errors with var = 0.5
+vv <- rnorm(TT, 0, sqrt(0.5))
+## obs data
+yy <- xx + vv
+```
+
+
+## Plot a random walk
+
+Plot the state and observation
+
+```{r, echo=TRUE, eval=FALSE}
+plot.ts(xx, lwd = 2, type = "o", pch = 16, col = "gray",
+        ylim = c(min(xx,yy), max(xx,yy)),
+        ylab = expression(italic(x[t])~~or~~italic(y[t])))
+lines(yy, lwd = 2, type = "o", pch = 16, col = "blue")
+```
+
+
+## Plot a random walk
+
+```{r, align.fig="center"}
+par(mai = c(0.8,0.8,0,0), omi = c(0,0,0,0))
+plot.ts(xx, lwd = 2, type = "o", pch = 16, col = "gray",
+        ylim = c(min(xx,yy), max(xx,yy)),
+        ylab = expression(italic(x[t])~~or~~italic(y[t])))
+lines(yy, lwd = 2, type = "o", pch = 16, col = "blue")
+```
+
+
+## Fitting models with `MARSS()`
+
+We can use the __MARSS__ pkg for R to fit state-space models
+
+To do so, we must write the model out just as we would on a white board
+
+
+## Fitting models with `MARSS()`
+
+Here are the main function arguments
+
+```{r, echo=TRUE, eval=FALSE}
+MARSS(y, model = NULL, inits = NULL, control = NULL, ...)
+```
+
+* `y` is an $n \times T$ `matrix` of data (observations)
+
+* `model` is a `list` that defines the state-space model
+
+* `inits` is an optional `list` of initial values
+
+* `control` is an optional `list` of control parameters
+
+
+## Fitting models with `MARSS()`
+
+`MARSS()` uses a slightly expanded form of state-space model, such that
+
+$$
+\begin{align}
+x_t &= b x_{t-1} + w_t \\
+y_t &= x_t + v_t \\
+& \Downarrow \\
+x_t &= b x_{t-1} + u + w_t \\
+y_t &= Z x_t + a + v_t
+\end{align}
+$$
+
+with $u = 0$, $Z = 1$, and $a = 0$
+
+
+## Fitting models with `MARSS()`
+
+$$
+x_t = b x_{t-1} + u + w_t ~ \text{with} ~ w_t \sim \text{N}(0,q)  \\
+y_t = Z x_t + a + v_t ~ \text{with} ~ v_t \sim \text{N}(0,r)
+$$
+
+`MARSS()` works on matrices, so we have to define any scalar as a $1 \times 1$ matrix
+
+```{r, echo=TRUE}
+mod_list <- list(
+  ## state model
+  B = matrix("b"), U = matrix(0), Q = matrix("q"),
+  ## obs model
+  Z = matrix(1), A = matrix(0), R = matrix("r")
+  )
+```
+
+
+## Fitting models with `MARSS()`
+
+What about the initial state $x_0$?
+
+$$
+x_0 \sim \text{N}(\pi,\lambda)
+$$
+
+Estimating both $\pi$ and $\lambda$ is nearly impossible, so the default is to treat $x_0$ as fixed, but unknown, effect rather than a random effect, such that
+
+$$
+x_0 \sim \text{N}(\pi,0)
+$$
+
+`MARSS()` will do this for us
+
+
+## Fitting models with `MARSS()`
+
+We can ignore the `inits` and `control` arguments for now and fit the model
+
+```{r, echo=TRUE, eval=FALSE}
+## load MARSS package
+library(MARSS)
+## define the data as an N (rows) x T (cols) matrix
+dat <- matrix(yy, nrow = 1, ncol = TT)
+## fit the model
+mod_fit <- MARSS(y = dat, model = mod_list)
+```
+
+
+## Fitting models with `MARSS()`
+
+```{r, echo=FALSE, eval=TRUE}
+## load MARSS package
+library(MARSS)
+## define the data as an N (rows) x T (cols) matrix
+dat <- matrix(yy, nrow = 1, ncol = TT)
+## fit the model
+mod_fit <- MARSS(y = dat, model = mod_list)
+```
 
 
 

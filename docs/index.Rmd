@@ -16,6 +16,12 @@ options(width = 100)
 
 ***
 
+## Background
+
+These are materials for the Time Series Analysis Training Session offered as part of NMFS' Office of Science and Technology's [Protected Species Assessment Workshop](https://www.fisheries.noaa.gov/event/protected-species-assessment-workshop-psaw-ii) in La Jolla, CA from February 11-14, 2019.
+
+<br>
+
 ## Instructor
 
 [__Mark Scheuerell__](https://faculty.washington.edu/scheuerl/)  
@@ -31,7 +37,7 @@ Monday, February 11, 2019
 
 <br>
 
-## Schedule & topics
+## Schedule & Topics
 
 Links are included after each topic for both the knitted slide deck and the RMarkdown code used to generate them.
 

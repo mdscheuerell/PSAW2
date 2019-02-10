@@ -311,3 +311,83 @@ lines(xx, lwd = 2, type = "o", pch = 16, col = "gray")
 ```
 
 
+## Density-dependent population growth
+
+Stochastic Gompertz model
+
+$$
+N_t = N_{t-1} \text{e}^{(r_{max} + (b - 1) \log(N_{t-1}))} \text{e}^{w_t}  ~ \text{with} ~ w_t \sim \text{N}(0,r)
+$$
+
+
+## Density-dependent population growth
+
+Stochastic Gompertz model
+
+$$
+N_t = N_{t-1} \text{e}^{(r_{max} + (b - 1) \log(N_{t-1}))} \text{e}^{w_t}  ~ \text{with} ~ w_t \sim \text{N}(0,r)
+$$
+
+Taking the log of both sides and substituting $x_t$ for $\log(N_t)$
+
+$$
+\begin{align}
+\log(N_t) & = \log(N_{t-1}) + r_{max} + (b - 1) \log(N_{t-1}) + w_t \\
+& \Downarrow \\
+x_t &= x_{t-1} + r_{max} + (b - 1) x_{t-1} + w_t \\
+    &= x_{t-1} + r_{max} + b x_{t-1} - x_{t-1} + w_t \\
+    &= r_{max} + b x_{t-1} + w_t
+\end{align}
+$$
+
+## Density-dependent population growth
+
+What is the mean of $\{x_t\}$?
+
+$$
+x_t = r_{max} + b x_{t-1} + w_t
+$$
+
+
+## Density-dependent population growth
+
+What is the mean of $\{x_t\}$?
+
+$$
+x_t = r_{max} + b x_{t-1} + w_t
+$$
+
+$$
+\text{E}(x_t) = \frac{r_{max}}{1 - b}
+$$
+
+
+## Density-dependent population growth
+
+$$
+x_t = r_{max} + b x_{t-1} + w_t
+$$
+
+It turns out that $r_{max}$ and $b$ are confounded and create a likelihood surface with a strong ridge
+
+In practice, we will de-mean our data and instead use a familiar AR(1) model
+
+$$
+x_t = b x_{t-1} + w_t
+$$
+
+
+## Density-dependent population growth
+
+If our population censuses contain observation or sampling errors, we can use a state-space version
+
+$$
+x_t = b x_{t-1} + w_t \\
+y_t = x_t + v_t
+$$
+
+
+
+
+
+

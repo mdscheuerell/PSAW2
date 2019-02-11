@@ -15,37 +15,28 @@ library(huxtable)
 ```
 
 class: center, middle
-# THE DEVELOPMENT AND APPLICATION OF NEW TOOLS IN QUANTITATIVE ECOLOGY
+# IMPROVED UNDERSTANDING OF FISHERIES & ECOSYSTEMS FROM NOISY & DISPARATE DATA
 ## Mark Scheuerell
 _Northwest Fisheries Science Center<br>National Oceanic and Atmospheric Administration<br>Seattle, WA_
 
-.futnote.blue-text[@mark_scheuerell]
+.futnote[`r icon::fa("envelope")` mark.scheuerell@noaa.gov]
 
-.citation.blue-text[\#WSN2017]
-
----
-
-# Acknowledgments - WSN
-
-.large.blue-text[
-## Jenn Caselle
-
-## Brian Gaylord
-]
+.citation.blue-text[`r icon::fa("twitter")` @mark_scheuerell]
 
 ---
 
-# Acknowledgments - colleagues
+# Acknowledgments
 
-.large.blue-text[
-## Elizabeth Holmes, Jim Thorson, Eric Ward (NOAA)
+### .blue-text[ Elizabeth Holmes, Jim Thorson, Eric Ward ] (NMFS)
 
-## Eric Buhle, Kevin See (Quantitative Consultants, Inc)
+### .blue-text[ Eric Buhle, Kevin See ] (Biomark)
 
-## Stephanie Hampton, Steve Katz (WSU)
+### .blue-text[ Stephanie Hampton, Steve Katz ] (Washington St Univ)
 
-## Brice Semmens (Scripps)
-]
+### .blue-text[ Daniel Schindler, Jan Ohlberger ] (Univ Washington)
+
+### .blue-text[ Brice Semmens ] (Scripps)
+
 
 ---
 
@@ -59,79 +50,20 @@ background-size: cover
 
 ---
 
-# A brief outline
-
-1. Background
-.small[
-* Early mathematical flute music
-* Emergence of cool stuff
-* The future of cool stuff
-* Can we get through all of this?
-]
-2. Methods
-.small[
-* Old school stats
-* New school stats
-* Software improvements
-* Hardware is not soft
-]
-3. Results
-.small[
-* Some plots
-* Unrelated tangent
-* More plots
-* Really hard-to-read table
-* Horrendogram
-]
-4. Discussion
-.small[
-* Where is this headed?
-* So much inference
-* Did we get through all of this?
-* When is he done?
-]
-5. Supplement
-.small[
-* There's more?!
-* Who does this in a talk?
-]
-
----
-
-class: frimgB, center
-
-# I was trained as a field ecologist
-
-<img src="figs/Mark_at_Rainbow_Cr.jpg", alt="", height=440, width=440>
-
----
-
-# Many advances in methods for naturalists
-
-.blue-text[
-## Genetics
-
-## Remote sensing
-
-## Statistics
-]
-
----
-
 class: center
 
-# *Methods in Ecology and Evolution* .small[(Est. 2010)]
+# *Methods in Ecology and Evolution*
 
 ```{r timeseries, dpi=300, fig.height=4, fig.width=6, out.height="80%", out.width="80%", fig.align='center', echo=FALSE}
-mee <- data.frame(yr=seq(2010,2016),
-                  issues=c(4,6,6,12,12,12,12),
-                  imp=c(NA,5.1,6,6.6,7.4,8.1,8.6))
+mee <- data.frame(yr=seq(2010,2017),
+                  issues=c(4,6,6,12,12,12,12,12),
+                  imp=c(NA,5.1,6,6.6,7.4,8.1,8.6,9.9))
 
 pd <- as.matrix(mee[,-1])
 
 par(mfrow=c(2,1), mai=c(0.3,0.4,0.3,0), omi=c(0.1,0,0,0))
 ## top panel
-bp <- barplot(height=rep(NA,7), las=1, ylim=c(0,13),
+bp <- barplot(height=rep(NA,8), las=1, ylim=c(0,13),
               col="#488fdf", border=NA, space=1,
               ylab="",
               cex.lab=1.4, yaxt="n")
@@ -144,18 +76,18 @@ barplot(height=mee$issues, las=1, add=TRUE,
         cex.lab=1.4, yaxt="n")
 axis(2, at=seq(0,12,3), las=1, tick=FALSE, cex.axis=1.2)
 ## bottom panel
-barplot(height=rep(NA,7), las=1,
+barplot(height=rep(NA,8), las=1,
         col="darkblue", border=NA, space=1,
-        ylim=c(0,9),
+        ylim=c(0,11),
         ylab="", cex.lab=1.4, yaxt="n")
-abline(h=seq(0,8,2), col="gray")
-text(0, 1.1*par()$usr[4], cex=1.4,
+abline(h=seq(0,10,2), col="gray")
+text(0, 1.15*par()$usr[4], cex=1.4,
      "Impact factor", xpd=NA, pos=4)
 barplot(height=mee$imp, las=1, names.arg=mee$yr, add=TRUE,
         col="#ff8100", space=1, border=NA,
         cex.names=1.2,
         ylab="", cex.lab=1.4, yaxt="n")
-axis(2, at=seq(0,8,2), las=1, tick=FALSE, cex.axis=1.2)
+axis(2, at=seq(0,10,2), las=1, tick=FALSE, cex.axis=1.2)
 text(bp[1],1,"NA",col="darkgray", adj=c(0.5,0.5))
 ```
 
@@ -168,7 +100,7 @@ class: center, middle, inverse
 ---
 
 class: frimg, center
-background-image: url(figs/horrified.jpg)
+background-image: url(figs/alone.jpg)
 background-size: cover
 
 ---
@@ -190,10 +122,16 @@ class: center, middle, inverse
 
 # Hierarchical models also masquerade as
 
-.blue-text[
+.green-text[
 ## Nested data models
+]
+.blue-text[
 ## Mixed models
+]
+.orange-text[
 ## Random-effects models
+]
+.purple-text[
 ## State-space models
 ]
 
@@ -243,19 +181,27 @@ text("Time or space", x=cc/2, y=-ss/2+ss*2, xpd=NA, pos=1, cex=2)
 
 # States of nature might be
 
-.blue-text[
+.green-text[
 ## Animal location
+]
+.blue-text[
 ## Species density
+]
+.orange-text[
 ## Age structure
+]
+.purple-text[
 ## Reproductive status
 ]
 
 ---
 
-class: center, middle, inverse
+class: frimg, center, bottom, black-back
+background-image: url(figs/venice_carnival.jpg)
+background-size: 100%
 
-# Revealing the state of nature
-# requires some observations
+## .white-text[Revealing the true state requires observations]
+### .black-text[-]
 
 ---
 
@@ -269,7 +215,7 @@ class: frimg, bottom, right
 background-image: url(figs/sockeye.jpg)
 background-size: cover
 
-# .white-text[How many salmon are there?]
+# .white-text[How many sockeye are there?]
 
 ---
 
@@ -342,7 +288,7 @@ class: inverse, center, middle
 
 ## 1. Can combine many different .purple-text[data types]
 
-.purple-text[
+.center.purple-text[
 ### Changes in observers or sensors
 
 ### Varying survey locations & effort
@@ -356,7 +302,7 @@ class: inverse, center, middle
 
 ## 2. .gray-text[Missing data] are easily accommodated
 
-```{r obs_NA, dpi=300, fig.height=4, fig.width=8, out.height="100%", out.width="100%", fig.align='center', echo=FALSE, warning=FALSE}
+```{r obs_NA, dpi=300, fig.height=4, fig.width=8, out.height="90%", out.width="90%", fig.align='center', echo=FALSE, warning=FALSE}
 par(mai=c(0.8,0.8,0,0), omi=rep(0,4))
 ## arrow locs
 x0t <- seq(ss, by=2*ss, len=3)
@@ -397,25 +343,37 @@ text("Time or space", x=cc/2, y=-ss/2, xpd=NA, pos=1, cex=2)
 ---
 
 class: frimg
+background-image: url(figs/Jonsen2016.png)
+background-position: 50% 60%
+background-size: 70%
 
 # Advantages of hierarchical models
 
 ## 3. Improved accuracy & precision
 
-.img-left-land[![](figs/Jonsen2016.png)]
+---
+
+class: frimg
+background-image: url(figs/robin.jpg)
+background-position: 50% 80%
+background-size: 40%
+
+# Advantages of hierarchical models
+
+## 4. .gray-text[Data-poor] benefit from .green-text[data-rich]
 
 ---
 
 # Advantages of hierarchical models
 
-## 4. Rather flexible
+## 5. Rather flexible
 
 .center.blue-text[
-### This simple model can be used for 5+ unique applications!
+### This simple model can be used for 5+ unique applications
 ]
 
-$$\mathbf{x}_t = \mathbf{B} \mathbf{x}_{t-1} + \mathbf{w}_t \\
-  \mathbf{y}_t = \mathbf{Z} \mathbf{x}_t + \mathbf{v}_t$$
+$$\LARGE \mathbf{x}_t = \mathbf{B} \mathbf{x}_{t-1} + \mathbf{w}_t \\
+  \LARGE \mathbf{y}_t = \mathbf{Z} \mathbf{x}_t + \mathbf{v}_t$$
 
 ---
 
@@ -427,136 +385,233 @@ class: inverse, center, middle
 
 # Many software options
 
-## .blue-text[Canned **R** packages] (MARSS<sup>*</sup>, dlm, vars)
+## .green-text[Canned **R** packages] (dlm, vars, MARSS<sup>*</sup>)
 
 ## .blue-text[Code-your-own] (JAGS, Stan, greta)
 
 .footnoteSm.gray-text[
-<sup>\*</sup>See Holmes, Ward & Scheuerell (2014) for *lots* of worked examples
+<sup>\*</sup>Holmes, Ward, Scheuerell (2018) _Analysis of multivariate time-series using the MARSS package_
 ]
 
 ---
 
-class: frimg
+class: frimg, inverse-black
 background-image: url(figs/snake_oil.jpg)
 background-size: cover
 
 ---
 
-class: inverse, center, middle
-
-# AN EXAMPLE
-
----
-
-# Conservation of Pacific salmon
-
-.blue-text[
-## 50% of salmon populations along the US West Coast are listed under the Endangered Species Act
-]
-
----
-
-class: frimg
-background-image: url(figs/suppl_scheme.png)
-background-position: 50% 85%
-background-size: 80%
-
-# Recovery options for Pacific salmon
-
-.blue-text[
-## One strategy is hatchery supplementation
-]
-
----
-
-# Evaluating conservation interventions
-
-.blue-text[
-## Has 30+ years of hatchery supplementation boosted the production of wild salmon in the Snake R?
-]
-
----
-
-class: frimg
-background-image: url(figs/suppl_esu.png)
-background-size: 90%
-
----
-
-class: frimg
-background-image: url(figs/suppl_ts.png)
-background-position: 70% 45%
-background-size: 70%
-
-.topleft.blue-text[
-## Supplementation is ad hoc
-]
-
----
-
-class: frimg
-background-image: url(figs/suppl_eff.png)
-background-position: 50% 35%
-background-size: 120%
-
-# Effect size is rather subtle
-
-.blue-text[
-## Probability of positive effect = 0.73
-]
-
-.citationT.gray-text[Scheuerell et al. (2015) *Ecol* & *Evol* &nbsp; 5:2115–2125]
-
----
-
-class: inverse, center, middle
-
-# ANOTHER EXAMPLE
-
----
+class: center, middle, inverse
 
 # Emergence of high-dimension data
 
-.blue-text[
-## Remote sensing
-## Citizen science
-## Large-scale surveys
+---
+
+class: frimg, black-back
+
+background-image: url(figs/remote_sensing.jpg)
+background-position: 50% 50%
+background-size: 100%
+
+# .white-text[Remote sensing]
+
+---
+
+class: frimg, center
+
+background-image: url(figs/dna.png)
+background-position: 50% 50%
+background-size: 100%
+
+# Genetics
+
+---
+
+class: frimg, right
+
+background-image: url(figs/bird_count.jpg)
+background-position: 65% 50%
+background-size: 80%
+
+# Citizen Science
+
+---
+
+class: center, middle, inverse
+
+# How can we make sense of all of this?
+
+
+---
+
+class: frimg, inverse, right
+background-image: url(figs/shake.jpg)
+background-position: 50% 50%
+background-size: 100%
+
+.white-text[
+# Classification
+
+<br><br>
+
+## .right[ History ]
+
+## .left[ Tragedy ]
+
+<br><br>
+
+## .center[ Comedy ]  
 ]
 
 ---
 
-# Groundfish surveys along the West Coast
+class: center
 
-.blue-text[
-## Massive effort to assess stock status & set catch limits for 100+ species
+# Ordination
+
+```{r pca_ex, warning=FALSE, message=FALSE, echo=FALSE, dpi=300, fig.height=5, fig.width=10, fig.align='center', out.height="100%", out.width="100%"}
+set.seed(123)
+
+par(mfrow=c(1,2), mai=c(0.7,0.7,0.3,0.3), omi=rep(0,4), lwd=2, fg="black")
+
+## PCA
+biplot(prcomp(rock[,c(1,2,4)]), col=c("black", "darkorange"),
+       yaxt="n", xaxt="n", ylab="", xlab="")
+mtext(side=1, expression(PC[1]), cex=1.5, line=1)
+mtext(side=2, expression(PC[2]), cex=1.5, line=1)
+mtext(side=3, "PCA", cex=2, line=0)
+
+## NMDS
+comm_mat <- matrix(
+   sample(1:100,300,replace=T),nrow=6,
+   dimnames=list(paste("community",1:6,sep="_"),paste0("sp",1:50)))
+
+nmds <- vegan::metaMDS(comm_mat, k=3, trymax=100, trace=0)
+
+vegan::ordiplot(nmds, type="n",
+                yaxt="n", xaxt="n", ylab="", xlab="")
+vegan::orditorp(nmds, display="species", col="dodgerblue", air=0.01)                     
+vegan::orditorp(nmds, display="sites", cex=1.25, col="darkorange", air=0.01)                     
+mtext(side=1, expression(NMDS[1]), cex=1.5, line=1)
+mtext(side=2, expression(NMDS[2]), cex=1.5, line=1)
+mtext(side=3, "NMDS", cex=2, line=0)
+```
+
+---
+
+```{r plot_many_ts, echo=FALSE, dpi=300, fig.height=5.5, fig.width=7, fig.align='center'}
+NN <- 25
+TT <- 30
+MM <- 3
+ 
+set.seed(123)
+## MM x TT matrix of innovations
+ww <- matrix(rnorm(MM*TT, 0, 1), MM, TT)
+ww[,1] <- rnorm(MM, 0, sqrt(5))
+## MM x TT matrix of scaled latent trends
+xx <- t(scale(apply(ww,1,cumsum)))
+
+## loadings matrix
+ZZ <- matrix(runif(NN*MM, -1, 1), NN, MM)
+diag(ZZ) <- rev(sort(abs(diag(ZZ))))
+ZZ[upper.tri(ZZ)] <- 0
+ZZ <- round(ZZ, 2)
+
+## obs var
+obs_var <- 0.2^2
+## obs errors
+ee <- t(MASS::mvrnorm(TT, matrix(0,NN,1), diag(obs_var,NN,NN)))
+## NN x TT matrix of observed data
+yy <- ZZ %*% xx + ee
+
+clr <- viridis::plasma(NN, alpha=0.7, end=0.8)
+
+vv <- sample(seq(NN), NN)
+
+par(mfrow=c(5,5), mai=c(0.1,0.1,0,0), omi=c(0,0,0,0)) 
+
+for(i in 1:NN) {
+	plot.ts(yy[vv[i],], lwd=2,
+	        xlab="", xaxt="n", ylab="", yaxt="n",
+	        col=clr[i], bty="n")
+}
+```
+
+---
+
+class: center
+
+# Just some combination of these
+
+```{r plot_dfa_trends, echo=FALSE, fig.align="center", dpi=300, fig.height=3, fig.width=8}
+## plot the trends
+par(mfrow=c(1,3), mai=c(0.2,0,0,0), omi=rep(0.1,4))
+clr <- viridis::plasma(MM, end=0.8)
+for(i in 1:3) {
+	plot.ts(xx[i,], lwd=3,
+	        xlab="", xaxt="n", ylab="", yaxt="n",
+	        col=clr[i], bty="n")
+}
+```
+
+---
+
+# Dynamic Factor Analysis
+
+## .blue-text.under[State model]
+
+## .blue-text[Trends]<sub><i>t</i></sub> = .blue-text[Trends]<sub><i>t</i>-1</sub> + .gray-text[errors]<sub><i>t</i></sub> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (A few)
+
+## .purple-text.under[Observation model]
+
+## .purple-text[Data]<sub><i>t</i></sub> = .orange-text[Loadings] × .blue-text[Trends]<sub><i>t</i></sub> + .red-text[errors]<sub><i>t</i></sub> &nbsp; &nbsp; &nbsp; (Many)
+
+
+---
+
+# Salmon returns & productivity
+
+.blue-text.right[
+## Trying to understand when & where stocks covary
+]
+
+.gray-text.right[
+### Stachura et al. (2014) _CJFAS_
+
+### Goertler et al. (2016) _PLoS One_
+
+### Ohlberger et al. (2016) _Ecosphere_
+
+### Jorgensen et al. (2016) _Ecology & Evolution_
 ]
 
 ---
 
-# Data reduction techniques
+# Spatial Factor Analysis
 
-.blue-text[
-## Can we detect a few common patterns in the data?
-]
+## .blue-text.under[State model]
 
----
+## .blue-text[Spatial maps]<sub><i>i</i></sub>
 
-class: frimg
-background-image: url(figs/sfa_1.png)
-background-position: 50% 30%
-background-size: 65%
+## .purple-text.under[Observation model]
+
+## .purple-text[Data]<sub><i>i</i></sub> = .orange-text[Loadings] × .blue-text[Spatial maps]<sub><i>i</i></sub> + .red-text[error]<sub><i>i</i></sub>
 
 .citationT.gray-text[Thorson et al. (2015) *Meth* *Ecol* & *Evol* 6:627–637]
 
 ---
 
-class: frimg
-background-image: url(figs/sfa_2.png)
-background-position: 50% 30%
-background-size: 75%
+# Abundance & catches of groundfish
 
-.citationT.gray-text[Thorson et al. (2015) *Meth* *Ecol* & *Evol* 6:627–637]
+.right.blue-text[
+## How do spatial patterns change over time?
+]
+
+.gray-text.right[
+### Thorson et al. (2016) *Global Ecol & Biogeogr*
+
+### Thorson et al. (2018) *Proc Royal Soc B*
+]
 
 ---
 
@@ -564,7 +619,7 @@ background-size: 75%
 
 ## .blue-text[Identifying metapopulation structure]
 
-### .right[Ward et al (2010) *J Appl Ecol* &nbsp; 47:47–56]
+### .right[Ward et al. (2010) *J Appl Ecol* &nbsp; 47:47–56]
 
 ---
 
@@ -587,31 +642,36 @@ background-size: 75%
 # In summary
 
 .blue-text[
-## There is plethora of new methods for naturalists
+## Much of our data is noisy and disparate
 
-## Among them, hierarchical models show real promise
+## Hierarchical models offer a means for addressing these kinds of data
 
 ## Software & hardware improvements open new doors
 ]
 
-.futnote.blue-text[@mark_scheuerell]
+.futnote.blue-text[\#PSAW2019]
 
-.citation.blue-text[\#WSN2017]
+.citation.blue-text[`r icon::fa("twitter")` @mark_scheuerell]
 
 ---
 
 ##  Slide deck
 
-### https://github.com/mdscheuerell/WSN2017
+### https://github.com/mdscheuerell/PSAW2/talk
 
 ## Image sources
 
 .left.blue-text[
-### Drinking fountain: *Massachusetts Inst Tech*
-### Janet Leigh: *Paramount Studios*
-### Snake oil: *The Register*
+Drinking fountain: *Massachusetts Inst Tech*
+LIDAR: *NOAA*  
+DNA: *fizzgig (2016)*  
+Robin Hood: *John Escott*  
+M Caulkin: *20th Century Fox*  
+Carnival: *Frank Kovalchek (2010)*   
+Snake oil: *The Register*  
 ]
 
-.futnote.blue-text[@mark_scheuerell]
+.futnote.blue-text[\#PSAW2019]
 
-.citation.blue-text[\#WSN2017]
+.citation.blue-text[`r icon::fa("twitter")` @mark_scheuerell]
+

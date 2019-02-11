@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = FALSE)
 set.seed(123)
 ```
 
-## Topics for today
+## Topics
 
 Characteristics of time series
 
@@ -22,12 +22,7 @@ Characteristics of time series
 * Stationarity
 * Autocovariance & autocorrelation
 * Correlograms
-
-White noise
-
-Random walks
-
-Backshift & difference operators
+* Cross-correlation
 
 
 ## Expectation & the mean
@@ -458,18 +453,6 @@ mtext("Linear trend + seasonal effect", outer=TRUE, line=1, cex=1.5)
 ```
 
 
-## ACF for deterministic forms
-
-```{r}
-par(mfrow=c(1,2), mai=c(1,1,0,0), omi=c(0.1,0.1,0.6,0.1))
-# compute the 2 predictor variables
-tt <- rep(floor(runif(nn/10,1,101)), times=10)
-plot.ts(tt, ylab=expression(italic(x[t])))
-acf(tt)
-mtext("Sequence of 10 random numbers repeated 10 times", outer=TRUE, line=1, cex=1.5)
-```
-
-
 ## Induced autocorrelation
 
 Recall the transitive property, whereby
@@ -623,4 +606,23 @@ plot.ts(lynx, ylab="Number of trapped lynx")
 # par(mai=c(0.6,0.5,0,0.1))
 ccf(log(lynx), log(suns), ylab="Cross-correlation", main="")
 ```
+
+
+## Cross-correlation in __R__
+
+We often think of correlation in terms of causation `r icon::fa("meh-o")`
+
+A caution about estimating the ccf in __R__:
+
+```{r, echo=TRUE, eval=FALSE}
+ccf(x, y, ...)
+```
+
+`ccf(x, y)` estimates the correlation between `x[t+k]` and `y[t]`
+
+Thus, I usually
+
+* switch the $x$ and $y$ values  
+* consider only negative lags $k$
+
 

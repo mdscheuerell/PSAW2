@@ -45,11 +45,11 @@ Links are included after each topic for both the knitted slide deck and the RMar
 
 __8:30 - 10:00__ 
 
-  * Characteristics, autocorrelation, cross-correlation | [slides](session_1/lec_01_intro.html) | [Rmd](docs/session_1/lec_01_intro.Rmd)  
+  * Characteristics, autocorrelation, cross-correlation | [slides](session_1/lec_01_intro.html) | [Rmd](session_1/lec_01_intro.Rmd)  
   
-  * White noise, random walks and biased random walks | [slides](session_1/lec_02_WN_RW.html) | [Rmd](docs/session_1/lec_02_WN_RW.Rmd)  
+  * White noise, random walks and biased random walks | [slides](session_1/lec_02_WN_RW.html) | [Rmd](session_1/lec_02_WN_RW.Rmd)  
   
-  * AR(_p_), MA(_q_), ARMA(_p_,_q_) models | [slides](session_1/lec_03_ARMA_models.html) | [Rmd](docs/session_1/lec_03_ARMA_models.Rmd)  
+  * AR(_p_), MA(_q_), ARMA(_p_,_q_) models | [slides](session_1/lec_03_ARMA_models.html) | [Rmd](session_1/lec_03_ARMA_models.Rmd)  
 
 ***
 
@@ -63,9 +63,9 @@ __10:00 - 10:15__
 
 __10:15 - 11:15__
 
-  * Univariate state-space models | [slides](session_2/lec_04_SSM.html) | [Rmd](docs/session_2/lec_04_SSM.Rmd)   
+  * Univariate state-space models | [slides](session_2/lec_04_SSM.html) | [Rmd](session_2/lec_04_SSM.Rmd)   
   
-  * Multivariate state-space models | [slides](session_2/lec_05_MSSM.html) | [Rmd](docs/session_2/lec_05_MSSM.Rmd)  
+  * Multivariate state-space models | [slides](session_2/lec_05_MSSM.html) | [Rmd](session_2/lec_05_MSSM.Rmd)  
   
 ***
 
@@ -79,11 +79,11 @@ __11:15 - 11:30__
 
 __11:30 - 12:30__
 
-  * Regression with auto-correlated errors | [slides](session_3/lec_06_regr_ar1.html) | [Rmd](docs/session_3/lec_06_regr_ar1.Rmd)
+  * Regression with auto-correlated errors | [slides](session_3/lec_06_regr_ar1.html) | [Rmd](session_3/lec_06_regr_ar1.Rmd)
   
-  * Dynamic Factor Analysis (DFA) | [slides](session_3/lec_07_DFA.html) | [Rmd](docs/session_3/lec_07_DFA.Rmd)
+  * Dynamic Factor Analysis (DFA) | [slides](session_3/lec_07_DFA.html) | [Rmd](session_3/lec_07_DFA.Rmd)
   
-  * Dynamic Linear Models (DLMs) | [slides](session_3/lec_08_DLM.html) | [Rmd](docs/session_3/lec_08_DLM.Rmd)
+  * Dynamic Linear Models (DLMs) | [slides](session_3/lec_08_DLM.html) | [Rmd](session_3/lec_08_DLM.Rmd)
   
 ***
 

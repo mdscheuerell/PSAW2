@@ -118,6 +118,107 @@ $\mathbf{w}_t \sim \text{MVN}(\mathbf{0}, \mathbf{Q})$
 $\mathbf{v}_t \sim \text{MVN}(\mathbf{0}, \mathbf{R})$
 
 
+## Forms of covariances matrices $\mathbf{Q}$
+
+No covariance
+
+$$
+\mathbf{Q} \stackrel{?}{=}
+\begin{bmatrix}
+ \sigma & 0 & 0 & 0 \\
+ 0 & \sigma & 0 & 0 \\
+ 0 & 0 & \sigma & 0 \\
+ 0 & 0 & 0 & \sigma
+\end{bmatrix}
+~\text{or}~~
+\mathbf{Q} \stackrel{?}{=}
+\begin{bmatrix}
+ \sigma_1 & 0 & 0 & 0 \\
+ 0 & \sigma_2 & 0 & 0 \\
+ 0 & 0 & \sigma_3 & 0 \\
+ 0 & 0 & 0 & \sigma_4
+\end{bmatrix}
+$$
+
+
+## Forms of covariances matrices $\mathbf{Q}$
+
+With covariance
+
+$$
+\mathbf{Q} \stackrel{?}{=}
+\begin{bmatrix}
+ \sigma & \gamma & \gamma & \gamma \\
+ \gamma & \sigma & \gamma & \gamma \\
+ \gamma & \gamma & \sigma & \gamma \\
+ \gamma & \gamma & \gamma & \sigma
+\end{bmatrix}
+~\text{or}~~
+\mathbf{Q} \stackrel{?}{=}
+\begin{bmatrix}
+ \sigma_1 & \gamma_{1,2} & \gamma_{1,3} & \gamma_{1,4} \\
+ \gamma_{1,2} & \sigma_2 & \gamma_{2,3} & \gamma_{2,4} \\
+ \gamma_{1,3} & \gamma_{2,3} & \sigma_3 & \gamma_{3,4} \\
+ \gamma_{1,4} & \gamma_{2,4} & \gamma_{3,4} & \sigma_4
+\end{bmatrix}
+$$
+
+
+## Forms of covariances matrices $\mathbf{R}$
+
+No covariance
+
+$$
+\mathbf{R} \stackrel{?}{=}
+\begin{bmatrix}
+ \sigma & 0 & 0 & 0 \\
+ 0 & \sigma & 0 & 0 \\
+ 0 & 0 & \sigma & 0 \\
+ 0 & 0 & 0 & \sigma
+\end{bmatrix}
+~\text{or}~~
+\mathbf{R} \stackrel{?}{=}
+\begin{bmatrix}
+ \sigma_1 & 0 & 0 & 0 \\
+ 0 & \sigma_2 & 0 & 0 \\
+ 0 & 0 & \sigma_3 & 0 \\
+ 0 & 0 & 0 & \sigma_4
+\end{bmatrix}
+$$
+
+
+## Forms of covariances matrices $\mathbf{R}$
+
+With covariance
+
+$$
+\mathbf{R} \stackrel{?}{=}
+\begin{bmatrix}
+ \sigma & \gamma & \gamma & \gamma \\
+ \gamma & \sigma & \gamma & \gamma \\
+ \gamma & \gamma & \sigma & \gamma \\
+ \gamma & \gamma & \gamma & \sigma
+\end{bmatrix}
+$$
+
+
+
+
+## Animal tracking
+
+Estimating animal locations from tagging is a classic example of applying this type of multivariate state-space model
+
+$$
+LAT_t = LAT_{t-1} + w_{LAT,t} \\
+LON_t = LON_{t-1} + w_{LON,t} \\
+$$
+
+$$
+y_t = LAT_t + v_{y,t} \\
+x_t = LON_t + v_{x,t} \\
+$$
+
+
 ## Random walk observed with error | In matrix form
 
 $$
@@ -139,21 +240,6 @@ $$
 $$
 
 Note that both $\mathbf{x}_t$ and $\mathbf{y}_t$ are $n \times 1$ column vectors
-
-
-## Animal tracking
-
-Estimating animal locations from tagging is a classic example of applying this type of multivariate state-space model
-
-$$
-LAT_t = LAT_{t-1} + w_{LAT,t} \\
-LON_t = LON_{t-1} + w_{LON,t} \\
-$$
-
-$$
-y_t = LAT_t + v_{y,t} \\
-x_t = LON_t + v_{x,t} \\
-$$
 
 
 

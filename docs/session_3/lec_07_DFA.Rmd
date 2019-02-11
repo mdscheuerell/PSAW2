@@ -909,3 +909,13 @@ text(min(load1) * 1.05, (basis_rot %*% matrix(c(par()$usr[1],0),2,1))[2],
 ```
 
 
+## Fitting DFA models
+
+Estimating the parameters in a DFA model can be challenging and time intensive
+
+Methods include
+
+ * maximum likelihood (eg, [Chap 10 in MARSS Manual](https://cran.r-project.org/web/packages/MARSS/vignettes/UserGuide.pdf))
+ 
+ * Bayesian (eg, [Stan](https://cran.r-project.org/web/packages/bayesdfa/index.html) or [greta](https://mdscheuerell.github.io/gretaDFA/))
+ 

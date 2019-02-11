@@ -371,5 +371,200 @@ $$
 $$
 
 
+## Popn structure of harbor seals
+
+Here is an example of using different forms of $\mathbf{Z}$ to evaluate the possible metapopulation structure of Harbor Seals
+
+[Harbor seal example](https://nwfsc-timeseries.github.io/atsa-labs/sec-mss-west-coast-harbor-seals-counts.html)
 
 
+## Estimating community interactions
+
+Number today is a function of the number yesterday
+
+```{r MAR_diag_1, dpi=300, fig.height=4, fig.width=8, out.height="100%", out.width="100%", fig.align='center', echo=FALSE, warning=FALSE}
+par(mai=c(0.8,0.8,0,0), omi=rep(0,4))
+## boundaries
+ss <- 5
+nn <- 8
+rr <- ss*3
+cc <- ss*nn
+## mid-points
+xm <- seq(5,cc-ss,rr)
+ymt <- rr - ss/2
+ymb <- ss/2
+## arrow locs
+y0 <- rr - ss
+y1 <- ss
+## empty plot space
+plot(c(0,cc), c(0,rr), type="n", xlab="", ylab="",
+     xaxt="n", yaxt="n", bty="n")
+## top row
+symbols(x=xm[2], y=ymt, rectangles=matrix(c(2*ss,ss),1,2),
+        lty="solid",  bg="#656565", fg=NA,
+        inches=FALSE, add=TRUE, lwd=3)
+text("Number", x=xm[2], y=ymt, cex=1.8, col="#ffffff", pos=3)
+text("yesterday", x=xm[2], y=ymt, cex=1.8, col="#ffffff", pos=1)
+## arrows
+arrows(x0=xm[2], y0=y0, y1=y1,
+       col="#656565", lwd=3, length=0.12)
+## bottom row: obs
+symbols(x=xm[2], y=ymb, rectangles=matrix(c(2*ss,ss),1,2),
+        lty="solid",  bg="#488fdf", fg=NA,
+        inches=FALSE, add=TRUE, lwd=3)
+text("Number", x=xm[2], y=ymb, cex=1.8, col="#ffffff", pos=3)
+text("today", x=xm[2], y=ymb, cex=1.8, col="#ffffff", pos=1)
+```
+
+
+## Estimating community interactions
+
+and the number of predators, prey & competitors
+
+```{r MAR_diag_2, dpi=300, fig.height=4, fig.width=8, out.height="100%", out.width="100%", fig.align='center', echo=FALSE, warning=FALSE}
+par(mai=c(0.8,0.8,0,0), omi=rep(0,4))
+## empty plot space
+plot(c(0,cc), c(0,rr), type="n", xlab="", ylab="",
+     xaxt="n", yaxt="n", bty="n")
+## top row
+symbols(x=xm, y=rep(ymt,3),
+        rectangles=matrix(c(2*ss,ss),3,2,byrow=TRUE),
+        lty="solid",  bg=c("#c10101","#ff8100","#844870"),
+        fg=NA,
+        inches=FALSE, add=TRUE, lwd=3)
+text(c("Predators","Prey","Competitors"),
+     x=xm, y=rep(ymt,3), cex=1.7, col="#ffffff", pos=3)
+text("yesterday", x=xm, y=rep(ymt,3), cex=1.7, col="#ffffff", pos=1)
+## arrows
+arrows(x0=ss*seq(2,6,2), x1=ss*seq(3,5),
+       y0=y0, y1=y1,
+       col=c("#c10101","#ff8100","#844870"), lwd=3, length=0.12)
+## bottom row: obs
+symbols(x=xm[2], y=ymb, rectangles=matrix(c(2*ss,ss),1,2),
+        lty="solid",  bg="#488fdf", fg=NA,
+        inches=FALSE, add=TRUE, lwd=3)
+text("Number", x=xm[2], y=ymb, cex=1.8, col="#ffffff", pos=3)
+text("today", x=xm[2], y=ymb, cex=1.8, col="#ffffff", pos=1)
+```
+
+
+## State model for species interactions
+
+and external forces at various times
+
+```{r MAR_diag_3, dpi=300, fig.height=4, fig.width=8, out.height="100%", out.width="100%", fig.align='center', echo=FALSE, warning=FALSE}
+par(mai=c(0.8,0.8,0,0), omi=rep(0,4))
+## empty plot space
+plot(c(0,cc), c(0,rr), type="n", xlab="", ylab="",
+     xaxt="n", yaxt="n", bty="n")
+## top row
+symbols(x=xm[2], y=ymt, rectangles=matrix(c(2*ss,ss),1,2),
+        lty="solid",  bg="#339933", fg=NA,
+        inches=FALSE, add=TRUE, lwd=3)
+text("External", x=xm[2], y=ymt, cex=1.8, col="#ffffff", pos=3)
+text("forces", x=xm[2], y=ymt, cex=1.8, col="#ffffff", pos=1)
+## arrows
+arrows(x0=xm[2], y0=y0, y1=y1,
+       col="#339933", lwd=3, length=0.12)
+## bottom row: obs
+symbols(x=xm[2], y=ymb, rectangles=matrix(c(2*ss,ss),1,2),
+        lty="solid",  bg="#488fdf", fg=NA,
+        inches=FALSE, add=TRUE, lwd=3)
+text("Number", x=xm[2], y=ymb, cex=1.8, col="#ffffff", pos=3)
+text("today", x=xm[2], y=ymb, cex=1.8, col="#ffffff", pos=1)
+```
+
+## State model for species interactions
+
+$$
+x_{i,t} = \sum^{m}_{j = 1}{b_{i,j} x_{j,t}} + w_t
+$$
+
+where $b_{i,j}$ is the effect of the $j^{th}$ species on species $i$
+
+$b_{i,j}$ with $i = j$ is the density-dependent effect
+
+
+## State model for species interactions
+
+We can write this model in matrix notation as
+
+$$
+\mathbf{x}_t = \mathbf{B} \mathbf{x}_{t-1} + \mathbf{w}_t
+$$
+
+with
+
+$$
+\mathbf{B} =
+\begin{bmatrix}
+b_{1,1} & b_{1,2} & \dots & b_{1,m} \\
+b_{2,1} & b_{1,2} & \dots & b_{2,m} \\
+\vdots & \vdots & \ddots & \vdots \\
+b_{m,1} & b_{m,2} & \dots & b_{m,m}
+\end{bmatrix}
+$$
+
+
+## State model for species interactions
+
+Including the effects of exogenous drivers yields
+
+$$
+\mathbf{x}_t = \mathbf{B} \mathbf{x}_{t-1} + \mathbf{C} \mathbf{c}_{t-k} + \mathbf{w}_t
+$$
+
+Note that the lag $k \geq 0$
+
+
+## State model for species interactions
+
+Including the effects of exogenous drivers
+
+$$
+\mathbf{x}_t = \mathbf{B} \mathbf{x}_{t-1} + \mathbf{C} \mathbf{c}_{t-k} + \mathbf{w}_t
+$$
+
+The $m \times p$ matrix $\mathbf{C}$ contains the effect(s) of each covariate (cols) on each state (rows)
+
+The $p \times 1$ column vector $\mathbf{c}_{t-k}$ contains each of the $p$ covariates at time $t - k$
+
+
+## Covariate effects
+
+The effect(s) of covariates can vary by state/species/etc
+
+$$
+\mathbf{C} =
+\begin{bmatrix}
+C_{1, Temp} & C_{1, DO} \\ 
+C_{2, Temp} & C_{2, DO} \\ 
+\vdots & \vdots \\ 
+C_{m, Temp} & C_{m, DO}
+\end{bmatrix}
+~~ \text{or} ~~
+\mathbf{C} =
+\begin{bmatrix}
+C_{Temp} & C_{DO} \\ 
+C_{Temp} & C_{DO} \\ 
+\vdots & \vdots \\ 
+C_{Temp} & C_{DO}
+\end{bmatrix}
+$$
+
+with
+
+$$
+\mathbf{c}_{t-k} =
+\begin{bmatrix}
+Temp_{t-k} \\
+DO_{t-k}
+\end{bmatrix}
+$$
+
+
+## Estimating species interactions
+
+Here is an example of estimating species interactions from time series data
+
+[Holmes, Ward & Scheuerell (2018) Chap 13](https://cran.r-project.org/web/packages/MARSS/vignettes/UserGuide.pdf)

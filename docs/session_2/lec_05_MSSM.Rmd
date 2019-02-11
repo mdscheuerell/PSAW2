@@ -31,9 +31,9 @@ $$
 
 with
 
-$v_{i,t} \sim \text{N}(0, r)$
-
 $w_{i,t} \sim \text{N}(0, q)$
+
+$v_{i,t} \sim \text{N}(0, r)$
 
 
 ## Random walk observed with error
@@ -113,9 +113,9 @@ $$
 
 with 
 
-$\mathbf{v}_t \sim \text{MVN}(\mathbf{0}, \mathbf{R})$
-
 $\mathbf{w}_t \sim \text{MVN}(\mathbf{0}, \mathbf{Q})$
+
+$\mathbf{v}_t \sim \text{MVN}(\mathbf{0}, \mathbf{R})$
 
 
 ## Random walk observed with error | In matrix form
@@ -151,8 +151,8 @@ LON_t = LON_{t-1} + w_{LON,t} \\
 $$
 
 $$
-y_t = lat_t + v_{y,t} \\
-x_t = lon_t + v_{x,t} \\
+y_t = LAT_t + v_{y,t} \\
+x_t = LON_t + v_{x,t} \\
 $$
 
 
@@ -250,7 +250,7 @@ $$
 [n \times m] [m \times p] = [n \times p]
 $$
 
-If $\mathbf{y}_t$ is $n \times 1$ and $\mathbf{x}_t$ is $1 \times 1$ then $\mathbf{Z}$ must be $n \times n$ 
+If $\mathbf{y}_t$ is $n \times 1$ and $\mathbf{x}_t$ is $1 \times 1$ then $\mathbf{Z}$ must be $n \times 1$ 
 
 $$
 [n \times 1] = [n \times 1] [1 \times 1]

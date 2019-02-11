@@ -141,6 +141,23 @@ $$
 Note that both $\mathbf{x}_t$ and $\mathbf{y}_t$ are $n \times 1$ column vectors
 
 
+## Animal tracking
+
+Estimating animal locations from tagging is a classic example of applying this type of multivariate state-space model
+
+$$
+LAT_t = LAT_{t-1} + w_{LAT,t} \\
+LON_t = LON_{t-1} + w_{LON,t} \\
+$$
+
+$$
+y_t = lat_t + v_{y,t} \\
+x_t = lon_t + v_{x,t} \\
+$$
+
+
+
+
 ## Multiple observations of one state
 
 What if we had multiple observations of only 1 state?
@@ -318,9 +335,9 @@ $$
 \end{bmatrix}_t
 $$
 
-$y_1$ observes of $x_1$  
-$y_2$ & $y_3$ observe of $x_2$  
-$y_4$ & $y_5$ observe of $x_3$  
+$y_1$ observes $x_1$  
+$y_2$ & $y_3$ observe $x_2$  
+$y_4$ & $y_5$ observe $x_3$  
 
 
 ## Identification of population structure

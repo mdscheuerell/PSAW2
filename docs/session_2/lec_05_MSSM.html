@@ -118,9 +118,9 @@ y_{i,t} = x_{i,t} + a_i + v_{i,t}
 
 <p>with</p>
 
-<p>\(v_{i,t} \sim \text{N}(0, r)\)</p>
-
 <p>\(w_{i,t} \sim \text{N}(0, q)\)</p>
+
+<p>\(v_{i,t} \sim \text{N}(0, r)\)</p>
 
 </article></slide><slide class=""><hgroup><h2>Random walk observed with error</h2></hgroup><article  id="random-walk-observed-with-error">
 
@@ -197,9 +197,103 @@ v_{n,t} \\
 
 <p>with</p>
 
+<p>\(\mathbf{w}_t \sim \text{MVN}(\mathbf{0}, \mathbf{Q})\)</p>
+
 <p>\(\mathbf{v}_t \sim \text{MVN}(\mathbf{0}, \mathbf{R})\)</p>
 
-<p>\(\mathbf{w}_t \sim \text{MVN}(\mathbf{0}, \mathbf{Q})\)</p>
+</article></slide><slide class=""><hgroup><h2>Forms of covariances matrices \(\mathbf{Q}\)</h2></hgroup><article  id="forms-of-covariances-matrices-mathbfq">
+
+<p>No covariance</p>
+
+<p>\[
+\mathbf{Q} \stackrel{?}{=}
+\begin{bmatrix}
+ \sigma &amp; 0 &amp; 0 &amp; 0 \\
+ 0 &amp; \sigma &amp; 0 &amp; 0 \\
+ 0 &amp; 0 &amp; \sigma &amp; 0 \\
+ 0 &amp; 0 &amp; 0 &amp; \sigma
+\end{bmatrix}
+~\text{or}~~
+\mathbf{Q} \stackrel{?}{=}
+\begin{bmatrix}
+ \sigma_1 &amp; 0 &amp; 0 &amp; 0 \\
+ 0 &amp; \sigma_2 &amp; 0 &amp; 0 \\
+ 0 &amp; 0 &amp; \sigma_3 &amp; 0 \\
+ 0 &amp; 0 &amp; 0 &amp; \sigma_4
+\end{bmatrix}
+\]</p>
+
+</article></slide><slide class=""><hgroup><h2>Forms of covariances matrices \(\mathbf{Q}\)</h2></hgroup><article  id="forms-of-covariances-matrices-mathbfq-1">
+
+<p>With covariance</p>
+
+<p>\[
+\mathbf{Q} \stackrel{?}{=}
+\begin{bmatrix}
+ \sigma &amp; \gamma &amp; \gamma &amp; \gamma \\
+ \gamma &amp; \sigma &amp; \gamma &amp; \gamma \\
+ \gamma &amp; \gamma &amp; \sigma &amp; \gamma \\
+ \gamma &amp; \gamma &amp; \gamma &amp; \sigma
+\end{bmatrix}
+~\text{or}~~
+\mathbf{Q} \stackrel{?}{=}
+\begin{bmatrix}
+ \sigma_1 &amp; \gamma_{1,2} &amp; \gamma_{1,3} &amp; \gamma_{1,4} \\
+ \gamma_{1,2} &amp; \sigma_2 &amp; \gamma_{2,3} &amp; \gamma_{2,4} \\
+ \gamma_{1,3} &amp; \gamma_{2,3} &amp; \sigma_3 &amp; \gamma_{3,4} \\
+ \gamma_{1,4} &amp; \gamma_{2,4} &amp; \gamma_{3,4} &amp; \sigma_4
+\end{bmatrix}
+\]</p>
+
+</article></slide><slide class=""><hgroup><h2>Forms of covariances matrices \(\mathbf{R}\)</h2></hgroup><article  id="forms-of-covariances-matrices-mathbfr">
+
+<p>No covariance</p>
+
+<p>\[
+\mathbf{R} \stackrel{?}{=}
+\begin{bmatrix}
+ \sigma &amp; 0 &amp; 0 &amp; 0 \\
+ 0 &amp; \sigma &amp; 0 &amp; 0 \\
+ 0 &amp; 0 &amp; \sigma &amp; 0 \\
+ 0 &amp; 0 &amp; 0 &amp; \sigma
+\end{bmatrix}
+~\text{or}~~
+\mathbf{R} \stackrel{?}{=}
+\begin{bmatrix}
+ \sigma_1 &amp; 0 &amp; 0 &amp; 0 \\
+ 0 &amp; \sigma_2 &amp; 0 &amp; 0 \\
+ 0 &amp; 0 &amp; \sigma_3 &amp; 0 \\
+ 0 &amp; 0 &amp; 0 &amp; \sigma_4
+\end{bmatrix}
+\]</p>
+
+</article></slide><slide class=""><hgroup><h2>Forms of covariances matrices \(\mathbf{R}\)</h2></hgroup><article  id="forms-of-covariances-matrices-mathbfr-1">
+
+<p>With covariance</p>
+
+<p>\[
+\mathbf{R} \stackrel{?}{=}
+\begin{bmatrix}
+ \sigma &amp; \gamma &amp; \gamma &amp; \gamma \\
+ \gamma &amp; \sigma &amp; \gamma &amp; \gamma \\
+ \gamma &amp; \gamma &amp; \sigma &amp; \gamma \\
+ \gamma &amp; \gamma &amp; \gamma &amp; \sigma
+\end{bmatrix}
+\]</p>
+
+</article></slide><slide class=""><hgroup><h2>Animal tracking</h2></hgroup><article  id="animal-tracking">
+
+<p>Estimating animal locations from tagging is a classic example of applying this type of multivariate state-space model</p>
+
+<p>\[
+LAT_t = LAT_{t-1} + w_{LAT,t} \\
+LON_t = LON_{t-1} + w_{LON,t} \\
+\]</p>
+
+<p>\[
+y_t = LAT_t + v_{y,t} \\
+x_t = LON_t + v_{x,t} \\
+\]</p>
 
 </article></slide><slide class=""><hgroup><h2>Random walk observed with error </h2><h3> In matrix form</h3></hgroup><article  id="random-walk-observed-with-error-in-matrix-form-2">
 
@@ -221,20 +315,6 @@ v_{n,t} \\
 \]</p>
 
 <p>Note that both \(\mathbf{x}_t\) and \(\mathbf{y}_t\) are \(n \times 1\) column vectors</p>
-
-</article></slide><slide class=""><hgroup><h2>Animal tracking</h2></hgroup><article  id="animal-tracking">
-
-<p>Estimating animal locations from tagging is a classic example of applying this type of multivariate state-space model</p>
-
-<p>\[
-LAT_t = LAT_{t-1} + w_{LAT,t} \\
-LON_t = LON_{t-1} + w_{LON,t} \\
-\]</p>
-
-<p>\[
-y_t = lat_t + v_{y,t} \\
-x_t = lon_t + v_{x,t} \\
-\]</p>
 
 </article></slide><slide class=""><hgroup><h2>Multiple observations of one state</h2></hgroup><article  id="multiple-observations-of-one-state">
 
@@ -326,7 +406,7 @@ v_{n,t} \\
 [n \times m] [m \times p] = [n \times p]
 \]</p>
 
-<p>If \(\mathbf{y}_t\) is \(n \times 1\) and \(\mathbf{x}_t\) is \(1 \times 1\) then \(\mathbf{Z}\) must be \(n \times n\)</p>
+<p>If \(\mathbf{y}_t\) is \(n \times 1\) and \(\mathbf{x}_t\) is \(1 \times 1\) then \(\mathbf{Z}\) must be \(n \times 1\)</p>
 
 <p>\[
 [n \times 1] = [n \times 1] [1 \times 1]

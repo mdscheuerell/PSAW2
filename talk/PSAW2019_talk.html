@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="my-theme.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+class: center, middle
+# THE DEVELOPMENT AND APPLICATION OF NEW TOOLS IN QUANTITATIVE ECOLOGY
+## Mark Scheuerell
+_Northwest Fisheries Science Center&lt;br&gt;National Oceanic and Atmospheric Administration&lt;br&gt;Seattle, WA_
+
+.futnote.blue-text[@mark_scheuerell]
+
+.citation.blue-text[\#WSN2017]
+
+---
+
+# Acknowledgments - WSN
+
+.large.blue-text[
+## Jenn Caselle
+
+## Brian Gaylord
+]
+
+---
+
+# Acknowledgments - colleagues
+
+.large.blue-text[
+## Elizabeth Holmes, Jim Thorson, Eric Ward (NOAA)
+
+## Eric Buhle, Kevin See (Quantitative Consultants, Inc)
+
+## Stephanie Hampton, Steve Katz (WSU)
+
+## Brice Semmens (Scripps)
+]
+
+---
+
+class: frimg, center 
+background-image: url(figs/mit_fire_hose.jpg)
+background-size: cover
+
+.white-text[
+# I hope you're thirsty!
+]
+
+---
+
+# A brief outline
+
+1. Background
+.small[
+* Early mathematical flute music
+* Emergence of cool stuff
+* The future of cool stuff
+* Can we get through all of this?
+]
+2. Methods
+.small[
+* Old school stats
+* New school stats
+* Software improvements
+* Hardware is not soft
+]
+3. Results
+.small[
+* Some plots
+* Unrelated tangent
+* More plots
+* Really hard-to-read table
+* Horrendogram
+]
+4. Discussion
+.small[
+* Where is this headed?
+* So much inference
+* Did we get through all of this?
+* When is he done?
+]
+5. Supplement
+.small[
+* There's more?!
+* Who does this in a talk?
+]
+
+---
+
+class: frimgB, center
+
+# I was trained as a field ecologist
+
+&lt;img src="figs/Mark_at_Rainbow_Cr.jpg", alt="", height=440, width=440&gt;
+
+---
+
+# Many advances in methods for naturalists
+
+.blue-text[
+## Genetics
+
+## Remote sensing
+
+## Statistics
+]
+
+---
+
+class: center
+
+# *Methods in Ecology and Evolution* .small[(Est. 2010)]
+
+&lt;img src="PSAW2019_talk_files/figure-html/timeseries-1.png" width="80%" height="80%" style="display: block; margin: auto;" /&gt;
+
+---
+
+class: center, middle, inverse
+
+# Lots of focus on *hierarchical models*
+
+---
+
+class: frimg, center
+background-image: url(figs/horrified.jpg)
+background-size: cover
+
+---
+
+# Hi·er·ar·chi·cal
+
+### *adjective*
+
+1. ## Arranged in an order
+
+---
+
+class: center, middle, inverse
+
+# A hierarchical model is simply
+# a model within a model
+
+---
+
+# Hierarchical models also masquerade as
+
+.blue-text[
+## Nested data models
+## Mixed models
+## Random-effects models
+## State-space models
+]
+
+---
+
+class: center, middle, inverse
+
+# A state-space model has 2 parts
+
+---
+
+# Part 1: State model
+
+## Describes the .blue-text[true state of nature] over time or space
+
+&lt;img src="PSAW2019_talk_files/figure-html/state_diag-1.png" width="100%" height="100%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# States of nature might be
+
+.blue-text[
+## Animal location
+## Species density
+## Age structure
+## Reproductive status
+]
+
+---
+
+class: center, middle, inverse
+
+# Revealing the state of nature
+# requires some observations
+
+---
+
+class: center, middle, inverse
+
+# Observing nature can be easy
+
+---
+
+class: frimg, bottom, right
+background-image: url(figs/sockeye.jpg)
+background-size: cover
+
+# .white-text[How many salmon are there?]
+
+---
+
+class: center, middle, inverse
+
+# Observing nature can also be hard
+
+---
+
+class: frimg, bottom, right
+background-image: url(figs/sockeye.jpg)
+background-size: cover
+
+# .white-text[How many mayflies are there?]
+
+---
+
+# Part 2: Observation model
+
+## .purple-text[Data] = .blue-text[Truth] &amp;#177; .red-text[Errors]
+
+---
+
+# Part 2: Observation model
+
+## .purple-text[Data] = .blue-text[Truth] &amp;#177; .red-text[Errors]
+
+&lt;img src="PSAW2019_talk_files/figure-html/obs_diag-1.png" width="100%" height="100%" style="display: block; margin: auto;" /&gt;
+
+---
+
+class: inverse, center, middle
+
+# OK, but why bother?
+
+---
+
+# Advantages of hierarchical models
+
+## 1. Can combine many different .purple-text[data types]
+
+.purple-text[
+### Changes in observers or sensors
+
+### Varying survey locations &amp; effort
+
+### Direct &amp; remote sampling  
+]
+
+---
+
+# Advantages of hierarchical models
+
+## 2. .gray-text[Missing data] are easily accommodated
+
+&lt;img src="PSAW2019_talk_files/figure-html/obs_NA-1.png" width="100%" height="100%" style="display: block; margin: auto;" /&gt;
+
+---
+
+class: frimg
+
+# Advantages of hierarchical models
+
+## 3. Improved accuracy &amp; precision
+
+.img-left-land[![](figs/Jonsen2016.png)]
+
+---
+
+# Advantages of hierarchical models
+
+## 4. Rather flexible
+
+.center.blue-text[
+### This simple model can be used for 5+ unique applications!
+]
+
+`$$\mathbf{x}_t = \mathbf{B} \mathbf{x}_{t-1} + \mathbf{w}_t \\
+  \mathbf{y}_t = \mathbf{Z} \mathbf{x}_t + \mathbf{v}_t$$`
+
+---
+
+class: inverse, center, middle
+
+# How do I actually do this?
+
+---
+
+# Many software options
+
+## .blue-text[Canned **R** packages] (MARSS&lt;sup&gt;*&lt;/sup&gt;, dlm, vars)
+
+## .blue-text[Code-your-own] (JAGS, Stan, greta)
+
+.footnoteSm.gray-text[
+&lt;sup&gt;\*&lt;/sup&gt;See Holmes, Ward &amp; Scheuerell (2014) for *lots* of worked examples
+]
+
+---
+
+class: frimg
+background-image: url(figs/snake_oil.jpg)
+background-size: cover
+
+---
+
+class: inverse, center, middle
+
+# AN EXAMPLE
+
+---
+
+# Conservation of Pacific salmon
+
+.blue-text[
+## 50% of salmon populations along the US West Coast are listed under the Endangered Species Act
+]
+
+---
+
+class: frimg
+background-image: url(figs/suppl_scheme.png)
+background-position: 50% 85%
+background-size: 80%
+
+# Recovery options for Pacific salmon
+
+.blue-text[
+## One strategy is hatchery supplementation
+]
+
+---
+
+# Evaluating conservation interventions
+
+.blue-text[
+## Has 30+ years of hatchery supplementation boosted the production of wild salmon in the Snake R?
+]
+
+---
+
+class: frimg
+background-image: url(figs/suppl_esu.png)
+background-size: 90%
+
+---
+
+class: frimg
+background-image: url(figs/suppl_ts.png)
+background-position: 70% 45%
+background-size: 70%
+
+.topleft.blue-text[
+## Supplementation is ad hoc
+]
+
+---
+
+class: frimg
+background-image: url(figs/suppl_eff.png)
+background-position: 50% 35%
+background-size: 120%
+
+# Effect size is rather subtle
+
+.blue-text[
+## Probability of positive effect = 0.73
+]
+
+.citationT.gray-text[Scheuerell et al. (2015) *Ecol* &amp; *Evol* &amp;nbsp; 5:2115–2125]
+
+---
+
+class: inverse, center, middle
+
+# ANOTHER EXAMPLE
+
+---
+
+# Emergence of high-dimension data
+
+.blue-text[
+## Remote sensing
+## Citizen science
+## Large-scale surveys
+]
+
+---
+
+# Groundfish surveys along the West Coast
+
+.blue-text[
+## Massive effort to assess stock status &amp; set catch limits for 100+ species
+]
+
+---
+
+# Data reduction techniques
+
+.blue-text[
+## Can we detect a few common patterns in the data?
+]
+
+---
+
+class: frimg
+background-image: url(figs/sfa_1.png)
+background-position: 50% 30%
+background-size: 65%
+
+.citationT.gray-text[Thorson et al. (2015) *Meth* *Ecol* &amp; *Evol* 6:627–637]
+
+---
+
+class: frimg
+background-image: url(figs/sfa_2.png)
+background-position: 50% 30%
+background-size: 75%
+
+.citationT.gray-text[Thorson et al. (2015) *Meth* *Ecol* &amp; *Evol* 6:627–637]
+
+---
+
+# Other applications of hierarchical models
+
+## .blue-text[Identifying metapopulation structure]
+
+### .right[Ward et al (2010) *J Appl Ecol* &amp;nbsp; 47:47–56]
+
+---
+
+# Other applications of hierarchical models
+
+## .blue-text[Reducing bias in estimates of density dependence] 
+
+### .right[Knape &amp; de Valpine (2012) *Ecol Lett* &amp;nbsp; 15:17–23]
+
+---
+
+# Other applications of hierarchical models
+
+## .blue-text[Improving precision in species extinction forecasts] 
+
+### .right[See &amp; Holmes (2015) *Ecol Appl* &amp;nbsp; 25:1157–1165]
+
+---
+
+# In summary
+
+.blue-text[
+## There is plethora of new methods for naturalists
+
+## Among them, hierarchical models show real promise
+
+## Software &amp; hardware improvements open new doors
+]
+
+.futnote.blue-text[@mark_scheuerell]
+
+.citation.blue-text[\#WSN2017]
+
+---
+
+##  Slide deck
+
+### https://github.com/mdscheuerell/WSN2017
+
+## Image sources
+
+.left.blue-text[
+### Drinking fountain: *Massachusetts Inst Tech*
+### Janet Leigh: *Paramount Studios*
+### Snake oil: *The Register*
+]
+
+.futnote.blue-text[@mark_scheuerell]
+
+.citation.blue-text[\#WSN2017]
+    </textarea>
+<script src="libs/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function() {
+  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})();</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+});
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

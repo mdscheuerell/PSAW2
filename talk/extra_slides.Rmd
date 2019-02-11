@@ -1,0 +1,134 @@
+---
+output:
+  xaringan::moon_reader:
+    chakra: libs/remark-latest.min.js
+    css: "my-theme.css"
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+---
+
+```{r setup, include=FALSE, message=FALSE}
+options(htmltools.dir.version = FALSE, servr.daemon = TRUE)
+library(huxtable)
+```
+
+
+# Part 2: Observation model
+
+## .purple-text[Stuff we observe] = .blue-text[Stuff nature does] &#177; .red-text[Stuff we miss]
+
+---
+
+# State model for species interactions
+
+### Number today is a function of the .gray-text[number yesterday]
+
+```{r MAR_diag_1, dpi=300, fig.height=4, fig.width=8, out.height="100%", out.width="100%", fig.align='center', echo=FALSE, warning=FALSE}
+par(mai=c(0.8,0.8,0,0), omi=rep(0,4))
+## boundaries
+ss <- 5
+nn <- 8
+rr <- ss*3
+cc <- ss*nn
+## mid-points
+xm <- seq(5,cc-ss,rr)
+ymt <- rr - ss/2
+ymb <- ss/2
+## arrow locs
+y0 <- rr - ss
+y1 <- ss
+## empty plot space
+plot(c(0,cc), c(0,rr), type="n", xlab="", ylab="",
+     xaxt="n", yaxt="n", bty="n")
+## top row
+symbols(x=xm[2], y=ymt, rectangles=matrix(c(2*ss,ss),1,2),
+        lty="solid",  bg="#656565", fg=NA,
+        inches=FALSE, add=TRUE, lwd=3)
+text("Number", x=xm[2], y=ymt, cex=1.8, col="#ffffff", pos=3)
+text("yesterday", x=xm[2], y=ymt, cex=1.8, col="#ffffff", pos=1)
+## arrows
+arrows(x0=xm[2], y0=y0, y1=y1,
+       col="#656565", lwd=3, length=0.12)
+## bottom row: obs
+symbols(x=xm[2], y=ymb, rectangles=matrix(c(2*ss,ss),1,2),
+        lty="solid",  bg="#488fdf", fg=NA,
+        inches=FALSE, add=TRUE, lwd=3)
+text("Number", x=xm[2], y=ymb, cex=1.8, col="#ffffff", pos=3)
+text("today", x=xm[2], y=ymb, cex=1.8, col="#ffffff", pos=1)
+```
+
+---
+
+# State model for species interactions
+
+### ...and the number of .red-text[predators], .orange-text[prey], .purple-text[competitors]
+
+```{r MAR_diag_2, dpi=300, fig.height=4, fig.width=8, out.height="100%", out.width="100%", fig.align='center', echo=FALSE, warning=FALSE}
+par(mai=c(0.8,0.8,0,0), omi=rep(0,4))
+## empty plot space
+plot(c(0,cc), c(0,rr), type="n", xlab="", ylab="",
+     xaxt="n", yaxt="n", bty="n")
+## top row
+symbols(x=xm, y=rep(ymt,3),
+        rectangles=matrix(c(2*ss,ss),3,2,byrow=TRUE),
+        lty="solid",  bg=c("#c10101","#ff8100","#844870"),
+        fg=NA,
+        inches=FALSE, add=TRUE, lwd=3)
+text(c("Predators","Prey","Competitors"),
+     x=xm, y=rep(ymt,3), cex=1.7, col="#ffffff", pos=3)
+text("yesterday", x=xm, y=rep(ymt,3), cex=1.7, col="#ffffff", pos=1)
+## arrows
+arrows(x0=ss*seq(2,6,2), x1=ss*seq(3,5),
+       y0=y0, y1=y1,
+       col=c("#c10101","#ff8100","#844870"), lwd=3, length=0.12)
+## bottom row: obs
+symbols(x=xm[2], y=ymb, rectangles=matrix(c(2*ss,ss),1,2),
+        lty="solid",  bg="#488fdf", fg=NA,
+        inches=FALSE, add=TRUE, lwd=3)
+text("Number", x=xm[2], y=ymb, cex=1.8, col="#ffffff", pos=3)
+text("today", x=xm[2], y=ymb, cex=1.8, col="#ffffff", pos=1)
+```
+
+---
+
+# State model for species interactions
+
+### ...and .green-text[external forces] at various times
+
+```{r MAR_diag_3, dpi=300, fig.height=4, fig.width=8, out.height="100%", out.width="100%", fig.align='center', echo=FALSE, warning=FALSE}
+par(mai=c(0.8,0.8,0,0), omi=rep(0,4))
+## empty plot space
+plot(c(0,cc), c(0,rr), type="n", xlab="", ylab="",
+     xaxt="n", yaxt="n", bty="n")
+## top row
+symbols(x=xm[2], y=ymt, rectangles=matrix(c(2*ss,ss),1,2),
+        lty="solid",  bg="#339933", fg=NA,
+        inches=FALSE, add=TRUE, lwd=3)
+text("External", x=xm[2], y=ymt, cex=1.8, col="#ffffff", pos=3)
+text("forces", x=xm[2], y=ymt, cex=1.8, col="#ffffff", pos=1)
+## arrows
+arrows(x0=xm[2], y0=y0, y1=y1,
+       col="#339933", lwd=3, length=0.12)
+## bottom row: obs
+symbols(x=xm[2], y=ymb, rectangles=matrix(c(2*ss,ss),1,2),
+        lty="solid",  bg="#488fdf", fg=NA,
+        inches=FALSE, add=TRUE, lwd=3)
+text("Number", x=xm[2], y=ymb, cex=1.8, col="#ffffff", pos=3)
+text("today", x=xm[2], y=ymb, cex=1.8, col="#ffffff", pos=1)
+```
+
+---
+
+# Applications of hierarchical models
+
+.blue-text[
+## Individual movements
+
+## Species interactions
+
+## Joint species distributions
+
+## Meta-analyses
+]

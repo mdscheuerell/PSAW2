@@ -46,6 +46,7 @@ a, a > code {
   color: #ffffff;
   text-shadow: 2px 2px 6px #000000;
 }
+.wh-text { color: #ffffff }
 .gray-text { color: #656565 }
 .red-text { color: #c10101 }
 .orange-text { color: #ff8100 }
@@ -64,7 +65,7 @@ a, a > code {
   position: absolute;
   bottom: 2em;
   padding-right: 4em;
-  font-size: 75%;
+  font-size: 70%;
 }
 .botleft {
   position: fixed;
@@ -93,7 +94,7 @@ a, a > code {
   position: fixed;
   bottom: 1em;
   right: 2em;
-  font-size: 90%;
+  font-size: 80%;
 }
 .remark-code, .remark-inline-code { font-family: 'Source Code Pro', 'Lucida Console', Monaco, monospace; }
 .remark-code-line-highlighted     { background-color: #ffff88; }
@@ -118,6 +119,9 @@ a, a > code {
   background-color: #004080;
   color: #ffffff;
   text-shadow: 0 0 20px #333;
+}
+.black-back {
+  background-color: #000000;
 }
 .title-slide h1 {
   color: #F7F8FA;
@@ -161,6 +165,12 @@ a, a > code {
 }
 .pull-right ~ * {
   clear: both;
+}
+.img-center-land {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
 }
 .img-left-land {
   float: left;

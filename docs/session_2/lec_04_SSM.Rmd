@@ -351,7 +351,7 @@ for(i in 1:3) {
 Stochastic Gompertz model
 
 $$
-N_t = N_{t-1} \text{e}^{(r_{max} + (b - 1) \log(N_{t-1}))} \text{e}^{w_t}  ~ \text{with} ~ w_t \sim \text{N}(0,r)
+N_t = N_{t-1} \text{e}^{(r_{max} + (b - 1) \log(N_{t-1}))} \text{e}^{w_t}  ~ \text{with} ~ w_t \sim \text{N}(0,q)
 $$
 
 
@@ -579,6 +579,76 @@ library(MARSS)
 dat <- matrix(yy, nrow = 1, ncol = TT)
 ## fit the model
 mod_fit <- MARSS(y = dat, model = mod_list)
+```
+
+
+## Covariates in state-space models
+
+We can include covariates (explanatory variables) in our models as well
+
+Covariates in the state model _affect the underlying process_
+
+$$
+x_t = b x_{t-1} + C c_t + w_t
+$$
+
+
+## Covariates in state-space models
+
+We can include covariates (explanatory variables) in our models as well
+
+Covariates in the state model _affect the underlying process_
+
+$$
+x_t = b x_{t-1} + C c_t + w_t
+$$
+
+Covariates in the observation model are _offsets to the underlying process_
+
+$$
+y_t = Z x_t + D d_t + v_t
+$$
+
+
+## Covariates in state-space models
+
+```{r}
+ww <- xx <- xy <- rnorm(TT)
+
+bb <- 0.7
+
+CC <- DD <- 2
+cc <- dd <- sin(2*pi*seq(TT)/12)
+  
+for(t in 2:TT) {
+  xx[t] <- bb * xx[t-1] + CC * cc[t] + ww[t]
+  xy[t] <- bb * xy[t-1] + ww[t]
+}
+
+ee <- rnorm(TT)
+yy <- xy + DD * dd # + ee
+
+par(mai = c(0.9,0.9,0.5,0.1), omi = c(0,0,0,0))
+plot.ts(xx, ylim = range(xx,yy),
+        lwd = 2, type = "o", pch = 16, col = "gray",
+        ylab = expression(italic(x[t])~~or~~italic(y[t])))
+mtext(side = 3, expression(italic(x[t])==italic(b)~italic(x[t-1])~+~italic(C)~italic(c[t])~+~italic(w[t])),
+      line = 0.5, adj = 0)
+```
+
+
+## Covariates in state-space models
+
+```{r}
+par(mai = c(0.9,0.9,0.5,0.1), omi = c(0,0,0,0))
+plot.ts(xx, ylim = range(xx,yy),
+        lwd = 2, type = "o", pch = 16, col = "gray",
+        ylab = expression(italic(x[t])~~or~~italic(y[t])))
+lines(yy, lwd = 2, type = "o", pch = 16, cex = 1.5, col = "blue")
+mtext(side = 3, expression(italic(x[t])==italic(b)~italic(x[t-1])~+~italic(w[t])),
+      line = 1.5, adj = 0)
+mtext(side = 3, expression(italic(y[t])==italic(x[t])~+~italic(D)~italic(d[t])),
+      line = 0.5, adj = 0)
 ```
 
 

@@ -107,7 +107,338 @@
 <ol>
 <li><p>state (process) model</p></li>
 <li><p>observation model</p></li>
-</ol></article></slide>
+</ol>
+
+</article></slide><slide class=""><hgroup><h2>Simple model for 2+ time series </h2><h3> Random walk observed with error</h3></hgroup><article  id="simple-model-for-2-time-series-random-walk-observed-with-error">
+
+<p>\[
+x_{i,t} = x_{i,t-1} + w_{i,t} \\
+y_{i,t} = x_{i,t} + a_i + v_{i,t}
+\]</p>
+
+<p>with</p>
+
+<p>\(v_{i,t} \sim \text{N}(0, r)\)</p>
+
+<p>\(w_{i,t} \sim \text{N}(0, q)\)</p>
+
+</article></slide><slide class=""><hgroup><h2>Random walk observed with error</h2></hgroup><article  id="random-walk-observed-with-error">
+
+<p>\[
+x_{1,t} = x_{1,t-1} + w_{1,t} \\
+x_{2,t} = x_{2,t-1} + w_{2,t} \\
+\vdots \\
+x_{n,t} = x_{n,t-1} + w_{n,t}
+\]</p>
+
+<p>\[
+y_{1,t} = x_{1,t} + a_1 + v_{1,t} \\
+y_{2,t} = x_{2,t} + a_2 + v_{2,t} \\
+\vdots \\
+y_{n,t} = x_{n,t} + a_2 + v_{n,t} \\
+\]</p>
+
+</article></slide><slide class=""><hgroup><h2>Random walk observed with error </h2><h3> In matrix form</h3></hgroup><article  id="random-walk-observed-with-error-in-matrix-form">
+
+<p>\[
+\begin{bmatrix}
+x_{1,t} \\
+x_{2,t} \\
+\vdots \\
+x_{n,t} \\
+\end{bmatrix} =
+\begin{bmatrix}
+x_{1,t-1} \\
+x_{2,t-1} \\
+\vdots \\
+x_{n,t-1} \\
+\end{bmatrix} + 
+\begin{bmatrix}
+w_{1,t} \\
+w_{2,t} \\
+\vdots \\
+w_{n,t} \\
+\end{bmatrix}
+\]</p>
+
+<p>\[
+\begin{bmatrix}
+y_{1,t} \\
+y_{2,t} \\
+\vdots \\
+y_{n,t} \\
+\end{bmatrix} =
+\begin{bmatrix}
+x_{1,t} \\
+x_{2,t} \\
+\vdots \\
+x_{n,t} \\
+\end{bmatrix} + 
+\begin{bmatrix}
+a_1 \\
+a_2 \\
+\vdots \\
+a_n \\
+\end{bmatrix} + 
+\begin{bmatrix}
+v_{1,t} \\
+v_{2,t} \\
+\vdots \\
+v_{n,t} \\
+\end{bmatrix}
+\]</p>
+
+</article></slide><slide class=""><hgroup><h2>Random walk observed with error </h2><h3> In matrix form</h3></hgroup><article  id="random-walk-observed-with-error-in-matrix-form-1">
+
+<p>\[
+\mathbf{x}_t = \mathbf{x}_{t-1} + \mathbf{w}_t \\
+\mathbf{y}_t = \mathbf{x}_t + \mathbf{a} + \mathbf{v}_t
+\]</p>
+
+<p>with</p>
+
+<p>\(\mathbf{v}_t \sim \text{MVN}(\mathbf{0}, \mathbf{R})\)</p>
+
+<p>\(\mathbf{w}_t \sim \text{MVN}(\mathbf{0}, \mathbf{Q})\)</p>
+
+</article></slide><slide class=""><hgroup><h2>Random walk observed with error </h2><h3> In matrix form</h3></hgroup><article  id="random-walk-observed-with-error-in-matrix-form-2">
+
+<p>\[
+\mathbf{x}_t = \mathbf{x}_{t-1} + \mathbf{w}_t \\
+\mathbf{y}_t = \mathbf{x}_t + \mathbf{a} + \mathbf{v}_t \\
+\Downarrow \\
+\mathbf{x}_t = \mathbf{x}_{t-1} + \mathbf{w}_t \\
+\mathbf{y}_t = \mathbf{Z} \mathbf{x}_t + \mathbf{a} + \mathbf{v}_t
+\]</p>
+
+<p>with \(\mathbf{Z}\) equal to the \(n \times n\) Identity matrix \(\mathbf{I}_n\)</p>
+
+</article></slide><slide class=""><hgroup><h2>Random walk observed with error </h2><h3> In matrix form</h3></hgroup><article  id="random-walk-observed-with-error-in-matrix-form-3">
+
+<p>\[
+\mathbf{x}_t = \mathbf{x}_{t-1} + \mathbf{w}_t \\
+\mathbf{y}_t = \mathbf{Z} \mathbf{x}_t + \mathbf{a} + \mathbf{v}_t
+\]</p>
+
+<p>Note that both \(\mathbf{x}_t\) and \(\mathbf{y}_t\) are \(n \times 1\) column vectors</p>
+
+</article></slide><slide class=""><hgroup><h2>Animal tracking</h2></hgroup><article  id="animal-tracking">
+
+<p>Estimating animal locations from tagging is a classic example of applying this type of multivariate state-space model</p>
+
+<p>\[
+LAT_t = LAT_{t-1} + w_{LAT,t} \\
+LON_t = LON_{t-1} + w_{LON,t} \\
+\]</p>
+
+<p>\[
+y_t = lat_t + v_{y,t} \\
+x_t = lon_t + v_{x,t} \\
+\]</p>
+
+</article></slide><slide class=""><hgroup><h2>Multiple observations of one state</h2></hgroup><article  id="multiple-observations-of-one-state">
+
+<p>What if we had multiple observations of only 1 state?</p>
+
+<p>If so, \(\mathbf{x}_t\) would be a \(1 \times 1\) vector (ie, a scalar) and \(\mathbf{y}_t\) would be an \(n \times 1\) column vector</p>
+
+<p>\[
+[x_t] = [x_{t-1}] + [w_t]
+\]</p>
+
+<p>\[
+\begin{bmatrix}
+y_{1,t} \\
+y_{2,t} \\
+\vdots \\
+y_{n,t} \\
+\end{bmatrix} =
+\begin{bmatrix}
+x_{1,t} \\
+x_{2,t} \\
+\vdots \\
+x_{n,t} \\
+\end{bmatrix} + 
+\begin{bmatrix}
+a_1 \\
+a_2 \\
+\vdots \\
+a_n \\
+\end{bmatrix} + 
+\begin{bmatrix}
+v_{1,t} \\
+v_{2,t} \\
+\vdots \\
+v_{n,t} \\
+\end{bmatrix}
+\]</p>
+
+</article></slide><slide class=""><hgroup><h2>Multiple observations of one state</h2></hgroup><article  id="multiple-observations-of-one-state-1">
+
+<p>\[
+[x_t] = [x_{t-1}] + [w_t]
+\]</p>
+
+<p>\[
+\begin{bmatrix}
+y_{1,t} \\
+y_{2,t} \\
+\vdots \\
+y_{n,t} \\
+\end{bmatrix} =
+\begin{bmatrix}
+x_{1,t} \\
+x_{2,t} \\
+\vdots \\
+x_{n,t} \\
+\end{bmatrix} + 
+\begin{bmatrix}
+a_1 \\
+a_2 \\
+\vdots \\
+a_n \\
+\end{bmatrix} + 
+\begin{bmatrix}
+v_{1,t} \\
+v_{2,t} \\
+\vdots \\
+v_{n,t} \\
+\end{bmatrix}
+\]</p>
+
+<p>We need a way to map the \(1 \times 1\) state onto the \(n \times 1\) vector of observations</p>
+
+<p>\[
+\mathbf{y}_t = ~?~ x_t
+\]</p>
+
+</article></slide><slide class=""><hgroup><h2>Multiple observations of one state</h2></hgroup><article  id="multiple-observations-of-one-state-2">
+
+<p>We&#39;ll use the matrix \(\mathbf{Z}\) we saw earlier and treat \(x_t\) like a matrix</p>
+
+<p>\[
+\mathbf{y}_t = \mathbf{Z} \mathbf{x}_t
+\]</p>
+
+<p>Recall that the inner dimensions must match when multiplying matrices, such that</p>
+
+<p>\[
+[n \times m] [m \times p] = [n \times p]
+\]</p>
+
+<p>If \(\mathbf{y}_t\) is \(n \times 1\) and \(\mathbf{x}_t\) is \(1 \times 1\) then \(\mathbf{Z}\) must be \(n \times n\)</p>
+
+<p>\[
+[n \times 1] = [n \times 1] [1 \times 1]
+\]</p>
+
+</article></slide><slide class=""><hgroup><h2>Multiple observations of one state</h2></hgroup><article  id="multiple-observations-of-one-state-3">
+
+<p>For example</p>
+
+<p>\[
+\begin{bmatrix}
+y_{1,t} \\
+y_{2,t} \\
+y_{3,t}
+\end{bmatrix} =
+\begin{bmatrix}
+1 \\
+1 \\
+1
+\end{bmatrix}
+\begin{bmatrix}
+x_t
+\end{bmatrix} + 
+\begin{bmatrix}
+a_1 \\
+a_2 \\
+a_3
+\end{bmatrix} + 
+\begin{bmatrix}
+v_{1,t} \\
+v_{2,t} \\
+v_{3,t}
+\end{bmatrix}
+\]</p>
+
+</article></slide><slide class=""><hgroup><h2>Multiple obs of multiple states</h2></hgroup><article  id="multiple-obs-of-multiple-states">
+
+<p>What if we had \(n\) observations of \(m\) different states?</p>
+
+<p>We just need to follow the same logic for matrix multiplication</p>
+
+</article></slide><slide class=""><hgroup><h2>Multiple obs of multiple states</h2></hgroup><article  id="multiple-obs-of-multiple-states-1">
+
+<p>For example</p>
+
+<p>\[
+\begin{bmatrix}
+ y_1 \\
+ y_2 \\
+ y_3 \\
+ y_4 \\
+ y_5 
+\end{bmatrix}_t =
+\begin{bmatrix}
+ 1 &amp; 0 &amp; 0 \\
+ 0 &amp; 1 &amp; 0 \\
+ 0 &amp; 1 &amp; 0 \\
+ 0 &amp; 0 &amp; 1 \\
+ 0 &amp; 0 &amp; 1 \\
+\end{bmatrix} \times
+\begin{bmatrix}
+ x_1 \\
+ x_2 \\
+ x_3 
+\end{bmatrix}_t +
+\begin{bmatrix}
+ a_1 \\
+ a_2 \\
+ a_3 \\
+ a_4 \\
+ a_5 
+\end{bmatrix} +
+\begin{bmatrix}
+ v_1 \\
+ v_2 \\
+ v_3 \\
+ v_4 \\
+ v_5 
+\end{bmatrix}_t
+\]</p>
+
+<p>\(y_1\) observes \(x_1\)<br/>\(y_2\) &amp; \(y_3\) observe \(x_2\)<br/>\(y_4\) &amp; \(y_5\) observe \(x_3\)</p>
+
+</article></slide><slide class=""><hgroup><h2>Identification of population structure</h2></hgroup><article  id="identification-of-population-structure">
+
+<p>We can use the same approach to systematically evaluate the data support for different hypotheses about the underlying population structure</p>
+
+<p>\[
+\mathbf{Z} =
+\begin{bmatrix}
+1 \\
+1 \\
+\vdots \\
+1
+\end{bmatrix}
+~~ \text{vs} ~~
+\mathbf{Z} =
+\begin{bmatrix}
+1 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0 \\
+\vdots &amp; \vdots &amp; \vdots \\
+0 &amp; 0 &amp; 1 
+\end{bmatrix}
+~~ \text{vs} ~~
+\mathbf{Z} =
+\begin{bmatrix}
+1 &amp; 0 &amp; \dots &amp; 0 \\
+1 &amp; 0 &amp; \dots &amp; 0 \\
+\vdots &amp; \vdots &amp; \ddots &amp; 0 \\
+0 &amp; 0 &amp; \dots &amp; 1 
+\end{bmatrix}
+\]</p></article></slide>
 
 
   <slide class="backdrop"></slide>

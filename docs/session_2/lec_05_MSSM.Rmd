@@ -128,5 +128,231 @@ $$
 \mathbf{y}_t = \mathbf{Z} \mathbf{x}_t + \mathbf{a} + \mathbf{v}_t
 $$
 
-with $\mathbf{Z}$ equal to the Identity matrix $\mathbf{I}$
+with $\mathbf{Z}$ equal to the $n \times n$ Identity matrix $\mathbf{I}_n$
+
+
+## Random walk observed with error | In matrix form
+
+$$
+\mathbf{x}_t = \mathbf{x}_{t-1} + \mathbf{w}_t \\
+\mathbf{y}_t = \mathbf{Z} \mathbf{x}_t + \mathbf{a} + \mathbf{v}_t
+$$
+
+Note that both $\mathbf{x}_t$ and $\mathbf{y}_t$ are $n \times 1$ column vectors
+
+
+## Multiple observations of one state
+
+What if we had multiple observations of only 1 state?
+
+If so, $\mathbf{x}_t$ would be a $1 \times 1$ vector (ie, a scalar) and $\mathbf{y}_t$ would be an $n \times 1$ column vector
+
+$$
+[x_t] = [x_{t-1}] + [w_t]
+$$
+
+$$
+\begin{bmatrix}
+y_{1,t} \\
+y_{2,t} \\
+\vdots \\
+y_{n,t} \\
+\end{bmatrix} =
+\begin{bmatrix}
+x_{1,t} \\
+x_{2,t} \\
+\vdots \\
+x_{n,t} \\
+\end{bmatrix} + 
+\begin{bmatrix}
+a_1 \\
+a_2 \\
+\vdots \\
+a_n \\
+\end{bmatrix} + 
+\begin{bmatrix}
+v_{1,t} \\
+v_{2,t} \\
+\vdots \\
+v_{n,t} \\
+\end{bmatrix}
+$$
+
+
+## Multiple observations of one state
+
+$$
+[x_t] = [x_{t-1}] + [w_t]
+$$
+
+$$
+\begin{bmatrix}
+y_{1,t} \\
+y_{2,t} \\
+\vdots \\
+y_{n,t} \\
+\end{bmatrix} =
+\begin{bmatrix}
+x_{1,t} \\
+x_{2,t} \\
+\vdots \\
+x_{n,t} \\
+\end{bmatrix} + 
+\begin{bmatrix}
+a_1 \\
+a_2 \\
+\vdots \\
+a_n \\
+\end{bmatrix} + 
+\begin{bmatrix}
+v_{1,t} \\
+v_{2,t} \\
+\vdots \\
+v_{n,t} \\
+\end{bmatrix}
+$$
+
+We need a way to map the $1 \times 1$ state onto the $n \times 1$ vector of observations
+
+$$
+\mathbf{y}_t = ~?~ x_t
+$$
+
+
+## Multiple observations of one state
+
+We'll use the matrix $\mathbf{Z}$ we saw earlier and treat $x_t$ like a matrix
+
+$$
+\mathbf{y}_t = \mathbf{Z} \mathbf{x}_t
+$$
+
+Recall that the inner dimensions must match when multiplying matrices, such that
+
+$$
+[n \times m] [m \times p] = [n \times p]
+$$
+
+If $\mathbf{y}_t$ is $n \times 1$ and $\mathbf{x}_t$ is $1 \times 1$ then $\mathbf{Z}$ must be $n \times n$ 
+
+$$
+[n \times 1] = [n \times 1] [1 \times 1]
+$$
+
+
+## Multiple observations of one state
+
+For example
+
+$$
+\begin{bmatrix}
+y_{1,t} \\
+y_{2,t} \\
+y_{3,t}
+\end{bmatrix} =
+\begin{bmatrix}
+1 \\
+1 \\
+1
+\end{bmatrix}
+\begin{bmatrix}
+x_t
+\end{bmatrix} + 
+\begin{bmatrix}
+a_1 \\
+a_2 \\
+a_3
+\end{bmatrix} + 
+\begin{bmatrix}
+v_{1,t} \\
+v_{2,t} \\
+v_{3,t}
+\end{bmatrix}
+$$
+
+
+## Multiple obs of multiple states
+
+What if we had $n$ observations of $m$ different states?
+
+We just need to follow the same logic for matrix multiplication
+
+
+## Multiple obs of multiple states
+
+For example
+
+$$
+\begin{bmatrix}
+ y_1 \\
+ y_2 \\
+ y_3 \\
+ y_4 \\
+ y_5 
+\end{bmatrix}_t =
+\begin{bmatrix}
+ 1 & 0 & 0 \\
+ 0 & 1 & 0 \\
+ 0 & 1 & 0 \\
+ 0 & 0 & 1 \\
+ 0 & 0 & 1 \\
+\end{bmatrix} \times
+\begin{bmatrix}
+ x_1 \\
+ x_2 \\
+ x_3 
+\end{bmatrix}_t +
+\begin{bmatrix}
+ a_1 \\
+ a_2 \\
+ a_3 \\
+ a_4 \\
+ a_5 
+\end{bmatrix} +
+\begin{bmatrix}
+ v_1 \\
+ v_2 \\
+ v_3 \\
+ v_4 \\
+ v_5 
+\end{bmatrix}_t
+$$
+
+$y_1$ observes of $x_1$  
+$y_2$ & $y_3$ observe of $x_2$  
+$y_4$ & $y_5$ observe of $x_3$  
+
+
+## Identification of population structure
+
+We can use the same approach to systematically evaluate the data support for different hypotheses about the underlying population structure
+
+$$
+\mathbf{Z} =
+\begin{bmatrix}
+1 \\
+1 \\
+\vdots \\
+1
+\end{bmatrix}
+~~ \text{vs} ~~
+\mathbf{Z} =
+\begin{bmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+\vdots & \vdots & \vdots \\
+0 & 0 & 1 
+\end{bmatrix}
+~~ \text{vs} ~~
+\mathbf{Z} =
+\begin{bmatrix}
+1 & 0 & \dots & 0 \\
+1 & 0 & \dots & 0 \\
+\vdots & \vdots & \ddots & 0 \\
+0 & 0 & \dots & 1 
+\end{bmatrix}
+$$
+
+
+
 

@@ -93,6 +93,8 @@ __11:30 - 12:30__
 
 Here is some additional background information on the following topics:
 
+ * Lab book and additional computer exercises | [book](https://nwfsc-timeseries.github.io/atsa-labs/)
+
  * Backshift and Difference operators | [slides](additional/ts_operators.html) | [Rmd](additional/ts_operators.Rmd)
  
  * Identifying stationary AR(_p_) models | [slides](additional/stationary_AR.html) | [Rmd]((additional/stationary_AR.Rmd))

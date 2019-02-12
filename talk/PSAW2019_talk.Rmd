@@ -31,11 +31,9 @@ _Fish Ecology Division<br>Northwest Fisheries Science Center<br>Seattle, WA_
 
 ### .blue-text[ Eric Buhle, Kevin See ] (Biomark)
 
-### .blue-text[ Stephanie Hampton, Steve Katz ] (Washington St Univ)
-
-### .blue-text[ Daniel Schindler, Jan Ohlberger ] (Univ Washington)
-
 ### .blue-text[ Brice Semmens ] (Scripps)
+
+### .blue-text[ Steve Katz ] (Washington St Univ)
 
 
 ---
@@ -609,6 +607,13 @@ background-size: 80%
 
 ---
 
+class: black-back
+background-image: url(figs/wcgfs.jpg)
+background-position: 50% 50%
+background-size: 97%
+
+---
+
 # Spatial Factor Analysis
 
 ## .blue-text.under[State model]
@@ -618,13 +623,6 @@ background-size: 80%
 ## .purple-text.under[Observation model]
 
 ## .purple-text[Data]<sub><i>i</i></sub> = .orange-text[Loadings] × .blue-text[Spatial maps]<sub><i>i</i></sub> + .red-text[error]<sub><i>i</i></sub>
-
----
-
-class: black-back
-background-image: url(figs/wcgfs.jpg)
-background-position: 50% 50%
-background-size: 97%
 
 ---
 

@@ -3,6 +3,7 @@
   <head>
     <title></title>
     <meta charset="utf-8">
+    <link href="libs/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="my-theme.css" type="text/css" />
   </head>
   <body>
@@ -12,112 +13,46 @@
 
 
 class: center, middle
-# THE DEVELOPMENT AND APPLICATION OF NEW TOOLS IN QUANTITATIVE ECOLOGY
+# IMPROVED UNDERSTANDING OF FISHERIES &amp; ECOSYSTEMS FROM NOISY &amp; DISPARATE DATA
 ## Mark Scheuerell
-_Northwest Fisheries Science Center&lt;br&gt;National Oceanic and Atmospheric Administration&lt;br&gt;Seattle, WA_
+_Fish Ecology Division&lt;br&gt;Northwest Fisheries Science Center&lt;br&gt;Seattle, WA_
 
-.futnote.blue-text[@mark_scheuerell]
+.futnote.blue-text[\#PSAW2019]
 
-.citation.blue-text[\#WSN2017]
-
----
-
-# Acknowledgments - WSN
-
-.large.blue-text[
-## Jenn Caselle
-
-## Brian Gaylord
-]
+.citation.blue-text[<i class="fa  fa-twitter "></i> @mark_scheuerell]
 
 ---
 
-# Acknowledgments - colleagues
+# Acknowledgments
 
-.large.blue-text[
-## Elizabeth Holmes, Jim Thorson, Eric Ward (NOAA)
+### .blue-text[ Elizabeth Holmes, Jim Thorson, Eric Ward ] (NMFS)
 
-## Eric Buhle, Kevin See (Quantitative Consultants, Inc)
+### .blue-text[ Eric Buhle, Kevin See ] (Biomark)
 
-## Stephanie Hampton, Steve Katz (WSU)
+### .blue-text[ Brice Semmens ] (Scripps)
 
-## Brice Semmens (Scripps)
-]
+### .blue-text[ Steve Katz ] (Washington St Univ)
 
----
-
-class: frimg, center 
-background-image: url(figs/mit_fire_hose.jpg)
-background-size: cover
-
-.white-text[
-# I hope you're thirsty!
-]
 
 ---
 
-# A brief outline
+class: middle
 
-1. Background
-.small[
-* Early mathematical flute music
-* Emergence of cool stuff
-* The future of cool stuff
-* Can we get through all of this?
-]
-2. Methods
-.small[
-* Old school stats
-* New school stats
-* Software improvements
-* Hardware is not soft
-]
-3. Results
-.small[
-* Some plots
-* Unrelated tangent
-* More plots
-* Really hard-to-read table
-* Horrendogram
-]
-4. Discussion
-.small[
-* Where is this headed?
-* So much inference
-* Did we get through all of this?
-* When is he done?
-]
-5. Supplement
-.small[
-* There's more?!
-* Who does this in a talk?
-]
+# Q: .blue-text[Do you want clean data?]
+
+# A: .blue-text[Go into finance]
 
 ---
 
-class: frimgB, center
+class: middle
 
-# I was trained as a field ecologist
-
-&lt;img src="figs/Mark_at_Rainbow_Cr.jpg", alt="", height=440, width=440&gt;
-
----
-
-# Many advances in methods for naturalists
-
-.blue-text[
-## Genetics
-
-## Remote sensing
-
-## Statistics
-]
+# The rest of us seek ways to deal with our noisy &amp; disparate data
 
 ---
 
 class: center
 
-# *Methods in Ecology and Evolution* .small[(Est. 2010)]
+# *Methods in Ecology and Evolution*
 
 &lt;img src="PSAW2019_talk_files/figure-html/timeseries-1.png" width="80%" height="80%" style="display: block; margin: auto;" /&gt;
 
@@ -130,7 +65,7 @@ class: center, middle, inverse
 ---
 
 class: frimg, center
-background-image: url(figs/horrified.jpg)
+background-image: url(figs/alone.jpg)
 background-size: cover
 
 ---
@@ -152,10 +87,16 @@ class: center, middle, inverse
 
 # Hierarchical models also masquerade as
 
-.blue-text[
+.green-text[
 ## Nested data models
+]
+.blue-text[
 ## Mixed models
+]
+.orange-text[
 ## Random-effects models
+]
+.purple-text[
 ## State-space models
 ]
 
@@ -177,19 +118,27 @@ class: center, middle, inverse
 
 # States of nature might be
 
-.blue-text[
+.green-text[
 ## Animal location
+]
+.blue-text[
 ## Species density
+]
+.orange-text[
 ## Age structure
+]
+.purple-text[
 ## Reproductive status
 ]
 
 ---
 
-class: center, middle, inverse
+class: frimg, center, bottom, black-back
+background-image: url(figs/venice_carnival.jpg)
+background-size: 100%
 
-# Revealing the state of nature
-# requires some observations
+## .white-text[Revealing the true state requires observations]
+### .black-text[-]
 
 ---
 
@@ -203,7 +152,7 @@ class: frimg, bottom, right
 background-image: url(figs/sockeye.jpg)
 background-size: cover
 
-# .white-text[How many salmon are there?]
+# .white-text[How many sockeye are there?]
 
 ---
 
@@ -245,7 +194,7 @@ class: inverse, center, middle
 
 ## 1. Can combine many different .purple-text[data types]
 
-.purple-text[
+.center.purple-text[
 ### Changes in observers or sensors
 
 ### Varying survey locations &amp; effort
@@ -259,30 +208,42 @@ class: inverse, center, middle
 
 ## 2. .gray-text[Missing data] are easily accommodated
 
-&lt;img src="PSAW2019_talk_files/figure-html/obs_NA-1.png" width="100%" height="100%" style="display: block; margin: auto;" /&gt;
+&lt;img src="PSAW2019_talk_files/figure-html/obs_NA-1.png" width="90%" height="90%" style="display: block; margin: auto;" /&gt;
 
 ---
 
 class: frimg
+background-image: url(figs/Jonsen2016.png)
+background-position: 50% 60%
+background-size: 70%
 
 # Advantages of hierarchical models
 
 ## 3. Improved accuracy &amp; precision
 
-.img-left-land[![](figs/Jonsen2016.png)]
+---
+
+class: frimg
+background-image: url(figs/robin.jpg)
+background-position: 50% 80%
+background-size: 40%
+
+# Advantages of hierarchical models
+
+## 4. .gray-text[Data-poor] benefit from .green-text[data-rich]
 
 ---
 
 # Advantages of hierarchical models
 
-## 4. Rather flexible
+## 5. Rather flexible
 
 .center.blue-text[
-### This simple model can be used for 5+ unique applications!
+### This simple model can be used for 5+ unique applications
 ]
 
-`$$\mathbf{x}_t = \mathbf{B} \mathbf{x}_{t-1} + \mathbf{w}_t \\
-  \mathbf{y}_t = \mathbf{Z} \mathbf{x}_t + \mathbf{v}_t$$`
+`$$\LARGE \mathbf{x}_t = \mathbf{B} \mathbf{x}_{t-1} + \mathbf{w}_t \\
+  \LARGE \mathbf{y}_t = \mathbf{Z} \mathbf{x}_t + \mathbf{v}_t$$`
 
 ---
 
@@ -294,118 +255,171 @@ class: inverse, center, middle
 
 # Many software options
 
-## .blue-text[Canned **R** packages] (MARSS&lt;sup&gt;*&lt;/sup&gt;, dlm, vars)
+## .green-text[Canned **R** packages] (dlm, vars, MARSS&lt;sup&gt;*&lt;/sup&gt;)
 
 ## .blue-text[Code-your-own] (JAGS, Stan, greta)
 
 .footnoteSm.gray-text[
-&lt;sup&gt;\*&lt;/sup&gt;See Holmes, Ward &amp; Scheuerell (2014) for *lots* of worked examples
+&lt;sup&gt;\*&lt;/sup&gt;Holmes, Ward, Scheuerell (2018) _Analysis of multivariate time-series using the MARSS package_
 ]
 
 ---
 
-class: frimg
+class: frimg, inverse-black
 background-image: url(figs/snake_oil.jpg)
 background-size: cover
 
 ---
 
-class: inverse, center, middle
-
-# AN EXAMPLE
-
----
-
-# Conservation of Pacific salmon
-
-.blue-text[
-## 50% of salmon populations along the US West Coast are listed under the Endangered Species Act
-]
-
----
-
-class: frimg
-background-image: url(figs/suppl_scheme.png)
-background-position: 50% 85%
-background-size: 80%
-
-# Recovery options for Pacific salmon
-
-.blue-text[
-## One strategy is hatchery supplementation
-]
-
----
-
-# Evaluating conservation interventions
-
-.blue-text[
-## Has 30+ years of hatchery supplementation boosted the production of wild salmon in the Snake R?
-]
-
----
-
-class: frimg
-background-image: url(figs/suppl_esu.png)
-background-size: 90%
-
----
-
-class: frimg
-background-image: url(figs/suppl_ts.png)
-background-position: 70% 45%
-background-size: 70%
-
-.topleft.blue-text[
-## Supplementation is ad hoc
-]
-
----
-
-class: frimg
-background-image: url(figs/suppl_eff.png)
-background-position: 50% 35%
-background-size: 120%
-
-# Effect size is rather subtle
-
-.blue-text[
-## Probability of positive effect = 0.73
-]
-
-.citationT.gray-text[Scheuerell et al. (2015) *Ecol* &amp; *Evol* &amp;nbsp; 5:2115–2125]
-
----
-
-class: inverse, center, middle
-
-# ANOTHER EXAMPLE
-
----
+class: center, middle, inverse
 
 # Emergence of high-dimension data
 
-.blue-text[
-## Remote sensing
-## Citizen science
-## Large-scale surveys
+---
+
+class: frimg, black-back
+
+background-image: url(figs/remote_sensing.jpg)
+background-position: 50% 50%
+background-size: 100%
+
+# .white-text[Remote sensing]
+
+---
+
+class: frimg, center
+
+background-image: url(figs/dna.png)
+background-position: 50% 50%
+background-size: 100%
+
+# Genetics
+
+---
+
+class: frimg, right
+
+background-image: url(figs/bird_count.jpg)
+background-position: 65% 50%
+background-size: 80%
+
+# Citizen Science
+
+---
+
+class: center, middle, inverse
+
+# How can we make sense of all of this?
+
+
+---
+
+class: frimg, inverse, right
+background-image: url(figs/shake.jpg)
+background-position: 50% 50%
+background-size: 100%
+
+.white-text[
+# Classification
+
+&lt;br&gt;&lt;br&gt;
+
+## .right[ History ]
+
+## .left[ Tragedy ]
+
+&lt;br&gt;&lt;br&gt;
+
+## .center[ Comedy ]  
 ]
 
 ---
 
-# Groundfish surveys along the West Coast
+class: center
 
-.blue-text[
-## Massive effort to assess stock status &amp; set catch limits for 100+ species
+# Ordination
+
+&lt;img src="PSAW2019_talk_files/figure-html/pca_ex-1.png" width="100%" height="100%" style="display: block; margin: auto;" /&gt;
+
+---
+
+&lt;img src="PSAW2019_talk_files/figure-html/plot_many_ts-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+class: center
+
+# Just some combination of these
+
+&lt;img src="PSAW2019_talk_files/figure-html/plot_dfa_trends-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Dynamic Factor Analysis
+
+## .blue-text.under[State model]
+
+## .blue-text[Trends]&lt;sub&gt;&lt;i&gt;t&lt;/i&gt;&lt;/sub&gt; = .blue-text[Trends]&lt;sub&gt;&lt;i&gt;t&lt;/i&gt;-1&lt;/sub&gt; + .gray-text[errors]&lt;sub&gt;&lt;i&gt;t&lt;/i&gt;&lt;/sub&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; (A few)
+
+## .purple-text.under[Observation model]
+
+## .purple-text[Data]&lt;sub&gt;&lt;i&gt;t&lt;/i&gt;&lt;/sub&gt; = .orange-text[Loadings] × .blue-text[Trends]&lt;sub&gt;&lt;i&gt;t&lt;/i&gt;&lt;/sub&gt; + .red-text[errors]&lt;sub&gt;&lt;i&gt;t&lt;/i&gt;&lt;/sub&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; (Many)
+
+
+---
+
+# Salmon returns &amp; productivity
+
+.blue-text.right[
+## Trying to understand when &amp; where stocks covary
+]
+
+.gray-text.right[
+### Stachura et al. (2014) _CJFAS_
+
+### Goertler et al. (2016) _PLoS One_
+
+### Ohlberger et al. (2016) _Ecosphere_
+
+### Jorgensen et al. (2016) _Ecology &amp; Evolution_
 ]
 
 ---
 
-# Data reduction techniques
+class: frimg
+background-image: url(figs/dfa_1.png)
+background-position: 50% 40%
+background-size: 75%
 
-.blue-text[
-## Can we detect a few common patterns in the data?
-]
+---
+
+class: frimg
+background-image: url(figs/dfa_2.png)
+background-position: 50% 70%
+background-size: 80%
+
+# Two declining trends
+
+.citationT.gray-text[Ohlberger et al. (2016) *Ecosphere* 7:e01333]
+
+---
+
+class: black-back
+background-image: url(figs/wcgfs.jpg)
+background-position: 50% 50%
+background-size: 97%
+
+---
+
+# Spatial Factor Analysis
+
+## .blue-text.under[State model]
+
+## .blue-text[Spatial maps]&lt;sub&gt;&lt;i&gt;i&lt;/i&gt;&lt;/sub&gt;
+
+## .purple-text.under[Observation model]
+
+## .purple-text[Data]&lt;sub&gt;&lt;i&gt;i&lt;/i&gt;&lt;/sub&gt; = .orange-text[Loadings] × .blue-text[Spatial maps]&lt;sub&gt;&lt;i&gt;i&lt;/i&gt;&lt;/sub&gt; + .red-text[error]&lt;sub&gt;&lt;i&gt;i&lt;/i&gt;&lt;/sub&gt;
 
 ---
 
@@ -429,59 +443,63 @@ background-size: 75%
 
 # Other applications of hierarchical models
 
-## .blue-text[Identifying metapopulation structure]
-
-### .right[Ward et al (2010) *J Appl Ecol* &amp;nbsp; 47:47–56]
-
----
-
-# Other applications of hierarchical models
-
-## .blue-text[Reducing bias in estimates of density dependence] 
-
-### .right[Knape &amp; de Valpine (2012) *Ecol Lett* &amp;nbsp; 15:17–23]
-
----
-
-# Other applications of hierarchical models
-
 ## .blue-text[Improving precision in species extinction forecasts] 
 
-### .right[See &amp; Holmes (2015) *Ecol Appl* &amp;nbsp; 25:1157–1165]
+### .gray-text.right[See &amp; Holmes (2015) *Ecol Appl* &amp;nbsp; 25:1157–1165]
+
+---
+
+# Other applications of hierarchical models
+
+## .blue-text[How do spatial patterns change over time?]
+
+### .gray-text.right[Thorson et al. (2016) *Global Ecol &amp; Biogeogr* &amp;nbsp; 25:1144–1158]
+
+---
+
+# Other applications of hierarchical models
+
+## .blue-text[Relative importance of species vs spatial diversity in ecological portfolios] 
+
+### .gray-text.right[Thorson et al. (2018) *Proc Royal Soc B* &amp;nbsp; 285:20180915]
 
 ---
 
 # In summary
 
 .blue-text[
-## There is plethora of new methods for naturalists
+## Much of our data is noisy and disparate
 
-## Among them, hierarchical models show real promise
+## Hierarchical models offer a means for addressing these kinds of data
 
 ## Software &amp; hardware improvements open new doors
 ]
 
-.futnote.blue-text[@mark_scheuerell]
+.futnote.blue-text[\#PSAW2019]
 
-.citation.blue-text[\#WSN2017]
+.citation.blue-text[<i class="fa  fa-twitter "></i> @mark_scheuerell]
 
 ---
 
 ##  Slide deck
 
-### https://github.com/mdscheuerell/WSN2017
+### https://github.com/mdscheuerell/PSAW2/talk
 
 ## Image sources
 
 .left.blue-text[
-### Drinking fountain: *Massachusetts Inst Tech*
-### Janet Leigh: *Paramount Studios*
-### Snake oil: *The Register*
+Drinking fountain: *Massachusetts Inst Tech*
+LIDAR: *NOAA*  
+DNA: *fizzgig (2016)*  
+Robin Hood: *John Escott*  
+M Caulkin: *20th Century Fox*  
+Carnival: *Frank Kovalchek (2010)*   
+Snake oil: *The Register*  
 ]
 
-.futnote.blue-text[@mark_scheuerell]
+.futnote.blue-text[\#PSAW2019]
 
-.citation.blue-text[\#WSN2017]
+.citation.blue-text[<i class="fa  fa-twitter "></i> @mark_scheuerell]
     </textarea>
 <script src="libs/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({

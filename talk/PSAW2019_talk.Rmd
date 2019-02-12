@@ -17,9 +17,9 @@ library(huxtable)
 class: center, middle
 # IMPROVED UNDERSTANDING OF FISHERIES & ECOSYSTEMS FROM NOISY & DISPARATE DATA
 ## Mark Scheuerell
-_Northwest Fisheries Science Center<br>National Oceanic and Atmospheric Administration<br>Seattle, WA_
+_Fish Ecology Division<br>Northwest Fisheries Science Center<br>Seattle, WA_
 
-.futnote[`r icon::fa("envelope")` mark.scheuerell@noaa.gov]
+.futnote.blue-text[\#PSAW2019]
 
 .citation.blue-text[`r icon::fa("twitter")` @mark_scheuerell]
 
@@ -40,13 +40,17 @@ _Northwest Fisheries Science Center<br>National Oceanic and Atmospheric Administ
 
 ---
 
-class: frimg, center 
-background-image: url(figs/mit_fire_hose.jpg)
-background-size: cover
+class: middle
 
-.white-text[
-# I hope you're thirsty!
-]
+# Q: .blue-text[Do you want clean data?]
+
+# A: .blue-text[Go into finance]
+
+---
+
+class: middle
+
+# The rest of us seek ways to deal with our noisy & disparate data
 
 ---
 
@@ -587,6 +591,24 @@ for(i in 1:3) {
 
 ---
 
+class: frimg
+background-image: url(figs/dfa_1.png)
+background-position: 50% 40%
+background-size: 75%
+
+---
+
+class: frimg
+background-image: url(figs/dfa_2.png)
+background-position: 50% 70%
+background-size: 80%
+
+# Two declining trends
+
+.citationT.gray-text[Ohlberger et al. (2016) *Ecosphere* 7:e01333]
+
+---
+
 # Spatial Factor Analysis
 
 ## .blue-text.under[State model]
@@ -597,37 +619,30 @@ for(i in 1:3) {
 
 ## .purple-text[Data]<sub><i>i</i></sub> = .orange-text[Loadings] × .blue-text[Spatial maps]<sub><i>i</i></sub> + .red-text[error]<sub><i>i</i></sub>
 
+---
+
+class: black-back
+background-image: url(figs/wcgfs.jpg)
+background-position: 50% 50%
+background-size: 97%
+
+---
+
+class: frimg
+background-image: url(figs/sfa_1.png)
+background-position: 50% 30%
+background-size: 65%
+
 .citationT.gray-text[Thorson et al. (2015) *Meth* *Ecol* & *Evol* 6:627–637]
 
 ---
 
-# Abundance & catches of groundfish
+class: frimg
+background-image: url(figs/sfa_2.png)
+background-position: 50% 30%
+background-size: 75%
 
-.right.blue-text[
-## How do spatial patterns change over time?
-]
-
-.gray-text.right[
-### Thorson et al. (2016) *Global Ecol & Biogeogr*
-
-### Thorson et al. (2018) *Proc Royal Soc B*
-]
-
----
-
-# Other applications of hierarchical models
-
-## .blue-text[Identifying metapopulation structure]
-
-### .gray-text.right[Ward et al. (2010) *J Appl Ecol* &nbsp; 47:47–56]
-
----
-
-# Other applications of hierarchical models
-
-## .blue-text[Reducing bias in estimates of density dependence] 
-
-### .gray-text.right[Knape & de Valpine (2012) *Ecol Lett* &nbsp; 15:17–23]
+.citationT.gray-text[Thorson et al. (2015) *Meth* *Ecol* & *Evol* 6:627–637]
 
 ---
 
@@ -641,9 +656,17 @@ for(i in 1:3) {
 
 # Other applications of hierarchical models
 
-## .blue-text[Estimating partial regulation of communities] 
+## .blue-text[How do spatial patterns change over time?]
 
-### .gray-text.right[Thorson et al. (2017) *Ecol Appl* &nbsp; 98:1277–1289]
+### .gray-text.right[Thorson et al. (2016) *Global Ecol & Biogeogr* &nbsp; 25:1144–1158]
+
+---
+
+# Other applications of hierarchical models
+
+## .blue-text[Relative importance of species vs spatial diversity in ecological portfolios] 
+
+### .gray-text.right[Thorson et al. (2018) *Proc Royal Soc B* &nbsp; 285:20180915]
 
 ---
 

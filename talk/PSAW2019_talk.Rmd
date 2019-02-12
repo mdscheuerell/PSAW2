@@ -619,7 +619,7 @@ for(i in 1:3) {
 
 ## .blue-text[Identifying metapopulation structure]
 
-### .right[Ward et al. (2010) *J Appl Ecol* &nbsp; 47:47–56]
+### .gray-text.right[Ward et al. (2010) *J Appl Ecol* &nbsp; 47:47–56]
 
 ---
 
@@ -627,7 +627,7 @@ for(i in 1:3) {
 
 ## .blue-text[Reducing bias in estimates of density dependence] 
 
-### .right[Knape & de Valpine (2012) *Ecol Lett* &nbsp; 15:17–23]
+### .gray-text.right[Knape & de Valpine (2012) *Ecol Lett* &nbsp; 15:17–23]
 
 ---
 
@@ -635,7 +635,15 @@ for(i in 1:3) {
 
 ## .blue-text[Improving precision in species extinction forecasts] 
 
-### .right[See & Holmes (2015) *Ecol Appl* &nbsp; 25:1157–1165]
+### .gray-text.right[See & Holmes (2015) *Ecol Appl* &nbsp; 25:1157–1165]
+
+---
+
+# Other applications of hierarchical models
+
+## .blue-text[Estimating partial regulation of communities] 
+
+### .gray-text.right[Thorson et al. (2017) *Ecol Appl* &nbsp; 98:1277–1289]
 
 ---
 
